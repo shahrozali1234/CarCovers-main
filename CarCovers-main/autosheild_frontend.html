@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoShield — Premium Car & Vehicle Top Covers</title>
+    <meta name="description" content="Shop 100% waterproof, UV reflective, and custom fit car top covers for sedan, hatchbacks, SUVs, and bikes in Pakistan.">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Announcement Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <span class="topbar-badge">SPECIAL OFFER</span>
+            <span>⚡ FREE DELIVERY ON SELECTED ORDERS OVER RS. 5,000 • CASH ON DELIVERY NATIONWIDE</span>
+            <span>📞 WHATSAPP ORDER: +92 328 5154975</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="autoshield-logo.png" alt="AutoShield Logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="shop.html">Shop Catalogue</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About & Tech</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <div class="search-box">
+                    <i>🔍</i>
+                    <input type="text" id="searchInput" placeholder="Search car model...">
+                </div>
+
+                <button class="icon-btn" onclick="window.location.href='shop.html'" title="Wishlist">
+                    ♡<span class="badge" id="wishCount">0</span>
+                </button>
+
+                <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
+                    🛒<span class="badge" id="cartCount">0</span>
+                </button>
+
+                <button class="mobile-menu-btn" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <div class="eyebrow">Premium Automotive Protection</div>
+                <h1>KEEP YOUR CAR <br><span class="text-gradient">SAFE & STYLISH</span></h1>
+                <p>Heavy-duty all-weather car top covers engineered to shield your vehicle from extreme sun, UV degradation, torrential rainwater, dust storms, and paint scratches.</p>
+
+                <div class="hero-actions">
+                    <a href="shop.html" class="btn btn-primary">EXPLORE CATALOGUE →</a>
+                    <a href="#fit-finder" class="btn btn-outline">FIT FINDER 🚗</a>
+                </div>
+            </div>
+
+            <div class="hero-visual">
+                <img src="images/hero_car_cover.png" alt="AutoShield Premium Car Cover">
+            </div>
+        </div>
+
+        <!-- Vehicle Fit Finder Bar -->
+        <div class="container" id="fit-finder">
+            <div class="fit-finder">
+                <div class="fit-finder-title">
+                    <span>🚗</span> <strong>Vehicle Fit Finder — Find Guaranteed Cover For Your Car:</strong>
+                </div>
+                <div class="fit-finder-form">
+                    <select id="fitMake" onchange="updateFitModels()">
+                        <option value="">1. Select Make (e.g. Honda, Toyota)</option>
+                        <option value="Honda">Honda</option>
+                        <option value="Toyota">Toyota</option>
+                        <option value="Suzuki">Suzuki</option>
+                        <option value="Hyundai">Hyundai</option>
+                        <option value="Kia">Kia</option>
+                        <option value="MG">MG</option>
+                        <option value="Haval">Haval</option>
+                    </select>
+
+                    <select id="fitModel">
+                        <option value="">2. Select Model (e.g. Civic, Corolla)</option>
+                    </select>
+
+                    <select id="fitBody">
+                        <option value="Sedan">Body Style (All)</option>
+                        <option value="Sedan">Sedan</option>
+                        <option value="Hatchback">Hatchback</option>
+                        <option value="SUV">SUV & 4x4</option>
+                    </select>
+
+                    <button class="btn btn-primary btn-sm" onclick="searchFitCover()">
+                        SEARCH COVER
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trust Highlights Bar -->
+    <section class="trust-bar">
+        <div class="container trust-grid">
+            <div class="trust-item">
+                <div class="trust-icon">🛡</div>
+                <div class="trust-info">
+                    <strong>3-Layer Heavy Fabric</strong>
+                    <span>All-weather composite protection</span>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">💧</div>
+                <div class="trust-info">
+                    <strong>100% Water & Dust Proof</strong>
+                    <span>Keeps vehicle paint spotless</span>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">✨</div>
+                <div class="trust-info">
+                    <strong>Anti-Scratch Fleece</strong>
+                    <span>Ultra gentle interior lining</span>
+                </div>
+            </div>
+
+            <div class="trust-item">
+                <div class="trust-icon">🚚</div>
+                <div class="trust-info">
+                    <strong>Cash on Delivery</strong>
+                    <span>Nationwide delivery in 2-4 days</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Categories Showcase -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Curated Collections</div>
+                <h2>Cover Solutions For Every Vehicle</h2>
+                <p>Browse custom protective covers tailored for sedans, SUVs, hatchbacks, and motorcycles.</p>
+            </div>
+
+            <div class="categories-grid">
+                <div class="category-card" onclick="window.location.href='categories.html#sedan'">
+                    <div class="category-img">
+                        <img src="images/cover_sedan_black.png" alt="Sedan Car Covers">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <div>
+                            <h3>Sedan Covers</h3>
+                            <p>Civic, Corolla, City, Yaris & more</p>
+                        </div>
+                        <div class="category-arrow">→</div>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="window.location.href='categories.html#suv'">
+                    <div class="category-img">
+                        <img src="images/cat_suv_cover.png" alt="SUV & 4x4 Covers">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <div>
+                            <h3>SUV & 4x4 Covers</h3>
+                            <p>Fortuner, Tucson, Sportage, MG</p>
+                        </div>
+                        <div class="category-arrow">→</div>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="window.location.href='categories.html#bike'">
+                    <div class="category-img">
+                        <img src="images/cat_bike_cover.png" alt="Bike Body Covers">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <div>
+                            <h3>Bike Covers</h3>
+                            <p>Standard & Superbike body covers</p>
+                        </div>
+                        <div class="category-arrow">→</div>
+                    </div>
+                </div>
+
+                <div class="category-card" onclick="window.location.href='categories.html#silver'">
+                    <div class="category-img">
+                        <img src="images/cover_sedan_silver.png" alt="Heat Deflectors">
+                        <div class="category-overlay"></div>
+                    </div>
+                    <div class="category-content">
+                        <div>
+                            <h3>Silver Heat Deflectors</h3>
+                            <p>Aluminum UV heat deflectors</p>
+                        </div>
+                        <div class="category-arrow">→</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Bestsellers Showcase -->
+    <section class="shop-section">
+        <div class="container">
+            <div class="section-head">
+                <div class="eyebrow">Top Bestsellers</div>
+                <h2>Featured Protective Covers</h2>
+                <p>Hand-crafted for extreme durability, guaranteed size fitment, and complete paint protection.</p>
+            </div>
+
+            <div class="product-grid" id="productGrid"></div>
+
+            <div style="text-align: center; margin-top: 48px;">
+                <a href="shop.html" class="btn btn-primary">VIEW ALL 12+ PRODUCTS IN CATALOGUE →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="autoshield-logo.png" alt="AutoShield" style="height: 54px;">
+                <p>AutoShield Car Top Covers — Premier brand for high quality custom-fit vehicle protective covers, SUV shields, and motorcycle body protection in Pakistan.</p>
+                <div style="margin-top: 20px;">
+                    <button class="btn btn-whatsapp btn-sm" onclick="orderViaWhatsApp()">💬 WhatsApp Support</button>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>Explore Pages</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Catalogue</a></li>
+                    <li><a href="categories.html">Categories Directory</a></li>
+                    <li><a href="about.html">About & Technology</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Customer Support</h4>
+                <ul class="footer-links">
+                    <li><a href="cart.html">View Shopping Cart</a></li>
+                    <li><a href="about.html">Fabric Specs & Warranty</a></li>
+                    <li><a href="contact.html#faq">FAQ & Shipping Guide</a></li>
+                    <li><a href="#" onclick="orderViaWhatsApp(); return false;">Direct WhatsApp Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Contact Us</h4>
+                <div style="font-size: 0.9rem; line-height: 1.8;">
+                    <p>📍 AutoShield HQ, Gulberg III, Lahore</p>
+                    <p>📞 Phone: +92 328 5154975</p>
+                    <p>✉ Email: support@autoshield.pk</p>
+                    <p>🕒 Mon - Sat (9:00 AM - 9:00 PM)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="border-top: 1px solid var(--border); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.85rem;">
+            © 2026 AutoShield Car Top Covers. All Rights Reserved. • Cash on Delivery Nationwide
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart 🛒</h3>
+            <button class="icon-btn" onclick="closeCartDrawer()">✕</button>
+        </div>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Total Amount:</span>
+                <span id="cartSubtotal" style="color: var(--red);">Rs. 0</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-full">PROCEED TO CHECKOUT →</a>
+            <button class="btn btn-whatsapp btn-full" style="margin-top: 10px;" onclick="orderViaWhatsApp()">💬 QUICK ORDER VIA WHATSAPP</button>
+        </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

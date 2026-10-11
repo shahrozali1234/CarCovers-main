@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories Directory — AutoShield Car Top Covers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <span class="topbar-badge">CATEGORIES DIRECTORY</span>
+            <span>⚡ FREE DELIVERY ON SELECTED ORDERS OVER RS. 5,000 • CASH ON DELIVERY NATIONWIDE</span>
+            <span>📞 WHATSAPP ORDER: +92 328 5154975</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="autoshield-logo.png" alt="AutoShield Logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Catalogue</a></li>
+                <li><a href="categories.html" class="active">Categories</a></li>
+                <li><a href="about.html">About & Tech</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
+                    🛒<span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="eyebrow">Explore Collections</div>
+            <h1>VEHICLE CATEGORIES <span class="text-gradient">DIRECTORY</span></h1>
+            <p>Full breakdown of custom-fit covers tailored for Sedans, Hatchbacks, SUVs, Motorcycles, and Accessories.</p>
+        </div>
+    </section>
+
+    <!-- Categories Grid -->
+    <section class="categories-section">
+        <div class="container" style="display:flex; flex-direction:column; gap:64px;">
+            
+            <!-- Category 1: Sedan Covers -->
+            <div id="sedan" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center; background:var(--card-bg); padding:40px; border-radius:var(--radius-lg); border:1px solid var(--border);">
+                <div>
+                    <div class="eyebrow">Sedan & Coupe Covers</div>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Custom Fit Sedan Car Top Covers</h2>
+                    <p style="color:var(--text-secondary); margin-bottom: 24px; line-height: 1.7;">
+                        Precision-tailored body covers for Honda Civic, Toyota Corolla, City, Yaris, Hyundai Elantra, Sonata, Audi A4/A6, and Mercedes C/E Class. Features dual mirror pockets and elastic bottom hems.
+                    </p>
+                    <ul style="color:var(--silver); line-height: 2; margin-bottom: 24px; font-size: 0.95rem;">
+                        <li>✔ 100% Rain & Dustproof Composite Barrier</li>
+                        <li>✔ Soft Fleece Interior to Protect Ceramic Coating</li>
+                        <li>✔ Heat Deflecting Aluminum Layer</li>
+                    </ul>
+                    <a href="shop.html" class="btn btn-primary">SHOP SEDAN COVERS →</a>
+                </div>
+                <div>
+                    <img src="images/cover_sedan_black.png" alt="Sedan Cover" style="border-radius:var(--radius-md); box-shadow:var(--shadow-lg);">
+                </div>
+            </div>
+
+            <!-- Category 2: SUV & 4x4 Covers -->
+            <div id="suv" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center; background:var(--card-bg); padding:40px; border-radius:var(--radius-lg); border:1px solid var(--border);">
+                <div>
+                    <img src="images/cat_suv_cover.png" alt="SUV Cover" style="border-radius:var(--radius-md); box-shadow:var(--shadow-lg);">
+                </div>
+                <div>
+                    <div class="eyebrow">SUV & Crossover Shields</div>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Heavy-Duty SUV & Pickup Truck Covers</h2>
+                    <p style="color:var(--text-secondary); margin-bottom: 24px; line-height: 1.7;">
+                        Engineered with extra height allowance and reinforced belly buckle lock straps for Toyota Fortuner, Land Cruiser, Prado, Tucson, Sportage, MG HS, Haval H6, and Hilux Revo.
+                    </p>
+                    <ul style="color:var(--silver); line-height: 2; margin-bottom: 24px; font-size: 0.95rem;">
+                        <li>✔ Reinforced Windproof Belly Straps</li>
+                        <li>✔ Bull-bar & Roof Rail Dimensions Allowance</li>
+                        <li>✔ Heavy 400D Oxford Polyester Shell</li>
+                    </ul>
+                    <a href="shop.html" class="btn btn-primary">SHOP SUV COVERS →</a>
+                </div>
+            </div>
+
+            <!-- Category 3: Bike Body Covers -->
+            <div id="bike" style="display:grid; grid-template-columns: 1fr 1fr; gap:40px; align-items:center; background:var(--card-bg); padding:40px; border-radius:var(--radius-lg); border:1px solid var(--border);">
+                <div>
+                    <div class="eyebrow">Motorcycle Protection</div>
+                    <h2 style="font-size: 2.2rem; margin-bottom: 16px;">Waterproof Superbike & Bike Covers</h2>
+                    <p style="color:var(--text-secondary); margin-bottom: 24px; line-height: 1.7;">
+                        Compact, foldable waterproof body covers designed for standard motorcycles and heavy bikes (Yamaha, Suzuki, Honda, Kawasaki, BMW Motorrad). Equipped with front lock grommet holes.
+                    </p>
+                    <a href="shop.html" class="btn btn-primary">SHOP BIKE COVERS →</a>
+                </div>
+                <div>
+                    <img src="images/cat_bike_cover.png" alt="Bike Cover" style="border-radius:var(--radius-md); box-shadow:var(--shadow-lg);">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Pakistan Vehicle Fitment Directory Section -->
+    <section class="car-directory-section" id="pakistan-cars">
+        <div class="container">
+            <div class="section-head" style="text-align:center; max-width:780px; margin:0 auto 36px;">
+                <div class="eyebrow">🇵🇰 50+ PAKISTANI CARS COMPATIBILITY MATRIX</div>
+                <h2 style="font-size:2.4rem; margin-bottom:12px;">Pakistan Vehicle Compatibility Guide</h2>
+                <p>Lookup any Pakistani vehicle to view guaranteed custom cover size, body dimensions, and instant WhatsApp ordering.</p>
+            </div>
+
+            <div class="car-search-bar-wrap">
+                <div class="car-search-input-box">
+                    <span class="car-search-icon">🔍</span>
+                    <input type="text" id="carDirectorySearch" placeholder="Search your car (e.g. Alto, Mehran, Civic, Corolla, Sportage, Alsvin, Fortuner, Mira)..." oninput="handleCarSearch(this.value)">
+                </div>
+
+                <div class="car-filter-chips" id="carFilterChips">
+                    <button class="car-chip active" onclick="filterCarsByBrand('all')">All Cars (50+)</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Suzuki')">Suzuki</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Toyota')">Toyota</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Honda')">Honda</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Hyundai')">Hyundai</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Kia')">Kia</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Changan')">Changan</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('MG')">MG & Haval</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Japanese Kei')">Kei Cars (Mira / Dayz)</button>
+                    <button class="car-chip" onclick="filterCarsByBrand('Luxury')">German Luxury (Audi/BMW/Benz)</button>
+                </div>
+            </div>
+
+            <div class="car-directory-grid" id="carDirectoryGrid">
+                <!-- Dynamically rendered by script.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="autoshield-logo.png" alt="AutoShield" style="height: 54px;">
+                <p>AutoShield Car Top Covers — Pakistan's premier online brand for high quality custom-fit vehicle protective covers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Explore</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Catalogue</a></li>
+                    <li><a href="about.html">About & Technology</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="cart.html">View Shopping Cart</a></li>
+                    <li><a href="#" onclick="orderViaWhatsApp(); return false;">WhatsApp Chat</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>📍 Gulberg III, Lahore, Pakistan<br>📞 +92 328 5154975</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart 🛒</h3>
+            <button class="icon-btn" onclick="closeCartDrawer()">✕</button>
+        </div>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Total Amount:</span>
+                <span id="cartSubtotal" style="color: var(--red);">Rs. 0</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-full">PROCEED TO CHECKOUT →</a>
+        </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

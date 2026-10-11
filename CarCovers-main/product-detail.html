@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details — AutoShield Car Top Covers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <span class="topbar-badge">PRODUCT DETAILS</span>
+            <span>⚡ FREE DELIVERY ON SELECTED ORDERS OVER RS. 5,000 • CASH ON DELIVERY NATIONWIDE</span>
+            <span>📞 WHATSAPP ORDER: +92 328 5154975</span>
+        </div>
+    </div>
+
+    <!-- Navigation Header -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="autoshield-logo.png" alt="AutoShield Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html" class="active">Shop Catalogue</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html">About & Tech</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            <div class="header-actions">
+                <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
+                    🛒<span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Detail Container -->
+    <main class="container">
+        <div class="detail-layout">
+            <!-- Product Gallery Image -->
+            <div class="detail-gallery">
+                <img id="detailImage" src="images/cover_sedan_black.png" alt="AutoShield Cover">
+            </div>
+
+            <!-- Product Specs & Actions -->
+            <div>
+                <div class="eyebrow" id="detailCat">Car Covers</div>
+                <h1 id="detailTitle" style="font-size: 2.2rem; margin: 8px 0 16px;">AutoShield Product</h1>
+                
+                <div class="product-rating" style="margin-bottom: 20px;">
+                    ★★★★★ <span>4.9 / 5.0 Rating (Verified Customer Reviews)</span>
+                </div>
+
+                <div class="product-price-row" style="margin-bottom: 24px;">
+                    <span class="current-price" id="detailPrice" style="font-size: 2.2rem; color: var(--red);">Rs. 6,999</span>
+                    <span class="old-price" id="detailOldPrice" style="font-size: 1.2rem;">Rs. 8,999</span>
+                    <span class="badge-discount" style="position:static; display:inline-block; margin-left: 12px;">SAVE UP TO 25%</span>
+                </div>
+
+                <p id="detailDesc" style="color: var(--text-secondary); line-height: 1.7; margin-bottom: 24px;">
+                    Ultra heavy-duty 3-layer waterproof car top cover designed for everyday protection against sun, rain, dust, and scratches.
+                </p>
+
+                <!-- Size Selector -->
+                <div style="margin-bottom: 24px;">
+                    <label style="display:block; font-weight:700; margin-bottom: 8px;">Select Size & Vehicle Model:</label>
+                    <select id="detailSizeSelect" style="width: 100%; padding: 14px; background: var(--card-bg); color: #fff; border: 1px solid var(--border); border-radius: var(--radius-md);">
+                        <option>Standard Size</option>
+                    </select>
+                </div>
+
+                <!-- Primary Action Buttons -->
+                <div style="display:flex; gap:16px; margin-bottom: 32px;">
+                    <button class="btn btn-primary" id="detailAddToCartBtn" style="flex:1;">
+                        🛒 ADD TO CART
+                    </button>
+                    <button class="btn btn-whatsapp" id="detailWhatsAppBtn" style="flex:1;">
+                        💬 ORDER VIA WHATSAPP
+                    </button>
+                </div>
+
+                <!-- Detailed Specs Table -->
+                <h3>Technical Specifications</h3>
+                <table class="specs-table">
+                    <tbody>
+                        <tr>
+                            <td>Fabric Layer Structure:</td>
+                            <td id="detailFabSpecs">3-Layer Composite Aluminum & Fleece</td>
+                        </tr>
+                        <tr>
+                            <td>Waterproofing Rating:</td>
+                            <td id="detailWater">10,000mm Hydrostatic Head</td>
+                        </tr>
+                        <tr>
+                            <td>UV Protection Index:</td>
+                            <td id="detailUv">99.5% UV Deflector</td>
+                        </tr>
+                        <tr>
+                            <td>Stitching & Lock System:</td>
+                            <td>Double-Stitching + Belly Windproof Buckle Straps</td>
+                        </tr>
+                        <tr>
+                            <td>Warranty Guarantee:</td>
+                            <td id="detailWarranty">2-Year Fabric Stitching Warranty</td>
+                        </tr>
+                        <tr>
+                            <td>Inner Paint Lining:</td>
+                            <td>Soft Scratch-Free Cotton Fleece</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="autoshield-logo.png" alt="AutoShield" style="height: 54px;">
+                <p>AutoShield Car Top Covers — Premier brand for high quality custom-fit vehicle protective covers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Catalogue</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="cart.html">View Shopping Cart</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>📍 Gulberg III, Lahore, Pakistan<br>📞 +92 328 5154975</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart 🛒</h3>
+            <button class="icon-btn" onclick="closeCartDrawer()">✕</button>
+        </div>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Total Amount:</span>
+                <span id="cartSubtotal" style="color: var(--red);">Rs. 0</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-full">PROCEED TO CHECKOUT →</a>
+            <button class="btn btn-whatsapp btn-full" style="margin-top: 10px;" onclick="orderViaWhatsApp()">💬 QUICK ORDER VIA WHATSAPP</button>
+        </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

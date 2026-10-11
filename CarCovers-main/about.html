@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About & Technology — AutoShield Car Top Covers</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Top Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <span class="topbar-badge">ABOUT AUTOSHIELD</span>
+            <span>⚡ FREE DELIVERY ON SELECTED ORDERS OVER RS. 5,000 • CASH ON DELIVERY NATIONWIDE</span>
+            <span>📞 WHATSAPP ORDER: +92 328 5154975</span>
+        </div>
+    </div>
+
+    <!-- Header Navigation -->
+    <header class="header">
+        <div class="container nav">
+            <a href="index.html" class="logo">
+                <img src="autoshield-logo.png" alt="AutoShield Logo">
+            </a>
+
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop Catalogue</a></li>
+                <li><a href="categories.html">Categories</a></li>
+                <li><a href="about.html" class="active">About & Tech</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+
+            <div class="header-actions">
+                <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
+                    🛒<span class="badge" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Banner -->
+    <section class="page-banner">
+        <div class="container">
+            <div class="eyebrow">Engineering Excellence</div>
+            <h1>ABOUT AUTOSHIELD <span class="text-gradient">TECHNOLOGY</span></h1>
+            <p>Dedicated to engineering the highest grade composite fabric covers to keep vehicle paint finishes flawless.</p>
+        </div>
+    </section>
+
+    <!-- Content Section -->
+    <section class="specs-section">
+        <div class="container" style="display:flex; flex-direction:column; gap:64px;">
+            
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:48px; align-items:center;">
+                <div>
+                    <div class="eyebrow">Our Mission</div>
+                    <h2 style="font-size:2.2rem; margin-bottom: 16px;">Protecting Your Passion On Wheels</h2>
+                    <p style="color:var(--text-secondary); line-height: 1.8; margin-bottom: 16px;">
+                        AutoShield was founded with a singular purpose: to solve the frustration car owners face with cheap, paper-thin body covers that tear easily, leak water, or scratch expensive paintwork.
+                    </p>
+                    <p style="color:var(--text-secondary); line-height: 1.8;">
+                        Every AutoShield cover undergoes rigorous quality testing to ensure 100% water resistance, maximum UV heat reflection, and soft anti-scratch inner lining.
+                    </p>
+                </div>
+                <div>
+                    <img src="images/hero_car_cover.png" alt="AutoShield Technology" style="border-radius: var(--radius-lg); box-shadow: var(--shadow-lg);">
+                </div>
+            </div>
+
+            <!-- Lab Test Highlights Grid -->
+            <div style="background:var(--card-bg); padding:48px; border-radius:var(--radius-lg); border:1px solid var(--border);">
+                <div class="section-head" style="margin-bottom:32px;">
+                    <div class="eyebrow">Quality Standards</div>
+                    <h2>Laboratory Tested & Verified</h2>
+                </div>
+
+                <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px;">
+                    <div style="background:var(--dark-bg); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border);">
+                        <div style="font-size:2rem; margin-bottom:12px;">🌊</div>
+                        <h3>10,000mm Waterproof</h3>
+                        <p style="color:var(--text-secondary); font-size:0.875rem; margin-top:8px;">Tested under intense pressurized water jets to guarantee zero moisture penetration during heavy monsoon rains.</p>
+                    </div>
+
+                    <div style="background:var(--dark-bg); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border);">
+                        <div style="font-size:2rem; margin-bottom:12px;">☀️</div>
+                        <h3>99.9% UV Reflector</h3>
+                        <p style="color:var(--text-secondary); font-size:0.875rem; margin-top:8px;">Aluminum coated surface layer reflects infrared heat and UV rays, preventing dashboard cracking and interior fade.</p>
+                    </div>
+
+                    <div style="background:var(--dark-bg); padding:24px; border-radius:var(--radius-md); border:1px solid var(--border);">
+                        <div style="font-size:2rem; margin-bottom:12px;">✨</div>
+                        <h3>Plush Cotton Fleece</h3>
+                        <p style="color:var(--text-secondary); font-size:0.875rem; margin-top:8px;">Super soft inner lining protects ceramic coatings, wax polishes, and sensitive clear coat finishes against swirl marks.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <img src="autoshield-logo.png" alt="AutoShield" style="height: 54px;">
+                <p>AutoShield Car Top Covers — Pakistan's premier online brand for high quality custom-fit vehicle protective covers.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop Catalogue</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul class="footer-links">
+                    <li><a href="cart.html">View Shopping Cart</a></li>
+                    <li><a href="#" onclick="orderViaWhatsApp(); return false;">WhatsApp Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <p>📍 Gulberg III, Lahore, Pakistan<br>📞 +92 328 5154975</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <aside class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Your Cart 🛒</h3>
+            <button class="icon-btn" onclick="closeCartDrawer()">✕</button>
+        </div>
+        <div class="cart-body" id="cartItems"></div>
+        <div class="cart-footer">
+            <div class="cart-subtotal">
+                <span>Total Amount:</span>
+                <span id="cartSubtotal" style="color: var(--red);">Rs. 0</span>
+            </div>
+            <a href="cart.html" class="btn btn-primary btn-full">PROCEED TO CHECKOUT →</a>
+        </div>
+    </aside>
+
+    <div class="toast-container" id="toastContainer"></div>
+    <script src="script.js"></script>
+</body>
+</html>

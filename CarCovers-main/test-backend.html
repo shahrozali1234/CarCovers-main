@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoShield - Test Backend</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 40px auto; padding: 20px; }
+        .endpoint { background: #f5f5f5; padding: 15px; margin: 10px 0; border-radius: 5px; }
+        .json { background: #e8e8e8; padding: 10px; border-radius: 5px; font-family: monospace; white-space: pre-wrap; }
+        .btn { padding: 10px 20px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; }
+        .btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <h1>🚗 AutoShield Backend Test</h1>
+    
+    <div class="endpoint">
+        <h3>Test API Connection</h3>
+        <button class="btn" onclick="testConnection()">Test Connection</button>
+        <div id="connectionResult" class="json"></div>
+    </div>
+    
+    <div class="endpoint">
+        <h3>Get All Products</button>
+        <button class="btn" onclick="getProducts()">Load Products</button>
+        <div id="productsResult" class="json"></div>
+    </div>
+    
+    <div class="endpoint">
+        <h3>Create Test Product</button>
+        <button class="btn" onclick="createProduct()">Add Test Product</button>
+        <div id="createResult" class="json"></div>
+    </div>
+    
+    <script>
+        function testConnection() {
+            fetch('api.php')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('connectionResult').innerHTML = 
+                        '<strong>Status:</strong> ' + data.status + '<br>' +
+                        '<strong>Message:</strong> ' + data.message;
+                })
+                .catch(error => {
+                    document.getElementById('connectionResult').innerHTML = 
+                        '<strong>Error:</strong> Could not connect to backend';
+                });
+        }
+        
+        function getProducts() {
+            fetch('api.php')
+                .then(response => response.json())
+                .then(data => {
+                    if (data.products && data.products.length > 0) {
+                        let html = '<strong>Products (' + data.count + '):</strong><br>';
+                        data.products.forEach((product, index) => {
+                            html += `${index + 1}. ${product.name} - $${product.price} (${product.cat})<br>`;
+                        });
+                        document.getElementById('productsResult').innerHTML = html;
+                    } else {
+                        document.getElementById('productsResult').innerHTML = 
+                            '<em>No products found. The database may need to be initialized.</em>';
+                    }
+                })
+                .catch(error => {
+                    document.getElementById('productsResult').innerHTML = 
+                        '<strong>Error:</strong> ' + error.message;
+                });
+        }
+        
+        function createProduct() {
+            const newProduct = {
+                name: 'Test Premium Cover',
+                cat: 'Car Covers',
+                price: 5999,
+                old: 7999,
+                image: 'test-cover.jpg'
+            };
+            
+            fetch('api.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(newProduct)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('createResult').innerHTML = 
+                    '<strong>Status:</strong> ' + data.status + '<br>' +
+                    '<strong>Message:</strong> ' + data.message;
+                // Refresh products after creating
+                getProducts();
+            })
+            .catch(error => {
+                document.getElementById('createResult').innerHTML = 
+                    '<strong>Error:</strong> ' + error.message;
+            });
+        }
+    </script>
+</body>
+</html>
