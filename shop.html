@@ -25,7 +25,7 @@
                 <img src="autoshield-logo.png" alt="AutoShield Logo">
             </a>
 
-            <ul class="nav-links">
+            <ul class="nav-links" id="mobileNav">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="shop.html" class="active">Shop Catalogue</a></li>
                 <li><a href="categories.html">Categories</a></li>
@@ -46,6 +46,7 @@
                 <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
                     🛒<span class="badge" id="cartCount">0</span>
                 </button>
+                <button class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
             </div>
         </div>
     </header>
