@@ -2,169 +2,179 @@
 // AUTOSHIELD MULTI-PAGE APPLICATION LOGIC
 // ==========================================================================
 
-const BASE_URL = 'http://localhost/autoshield/api.php';
-const WHATSAPP_NUMBER = '923285154975'; // AutoShield Support WhatsApp
+const BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? (window.location.pathname.includes('/autoshield') ? '/autoshield/api.php' : 'api.php')
+  : 'api.php';
+const WHATSAPP_NUMBER = '923072818652'; // AutoShield Support WhatsApp
 
-// Expanded 12+ Distinct Product Catalog with Unique Cover Photography
-const productsData = [
+// Expanded 12+ Distinct Product Catalog (Loaded from MySQL with offline fallback)
+let productsData = [
   {
     id: 1,
-    name: 'AutoShield Black Armor 3-Layer Sedan Cover',
+    name: 'AutoShield Non-Woven Lightweight Cover',
     cat: 'Car Covers',
-    price: 6999,
-    old: 8999,
-    image: 'images/cover_sedan_black.png',
+    price: 3499,
+    old: 4499,
+    image: 'images/fabrics/fabric_nonwoven_cover_1792064701054.jpg',
+    hoverImage: 'images/fabrics/fabric_nonwoven_detail_1792064761313.jpg',
     rating: 4.9,
     reviews: 48,
-    badge: 'BESTSELLER',
+    badge: 'BUDGET FRIENDLY',
     fitMake: 'Honda',
     fitModel: 'Civic',
     bodyStyle: 'Sedan',
-    shortDesc: 'Ultra heavy-duty 3-layer waterproof car top cover designed for Honda Civic, Toyota Corolla & mid-size sedans.',
-    fabricSpecs: '3-Layer Composite (Aluminum Film + PE Waterproof Membrane + Soft Cotton Fleece)',
-    waterproofRating: '10,000mm Hydrostatic Head',
-    uvProtection: '99.5% UV-B & UV-A Deflector',
-    guarantee: '2-Year Fabric Stitching Warranty',
+    shortDesc: 'Lightweight and affordable indoor car cover. Protects completely against dust and light surface scratches.',
+    fabricSpecs: 'Lightweight Non-Woven Spunbond Fabric + Dust & Scratch Barrier',
+    waterproofRating: 'Dustproof / Light Indoor',
+    uvProtection: 'Basic Garage Protection',
+    guarantee: '6-Month Stitching Warranty',
     sizesAvailable: ['Small (Civic / City)', 'Medium (Corolla / Yaris)', 'Large (Accord / Sonata)', 'Custom Tailored']
   },
   {
     id: 2,
     name: 'AutoShield Silver Reflective Heat Deflector',
     cat: 'Car Covers',
-    price: 7499,
-    old: 8999,
+    price: 5999,
+    old: 7499,
     image: 'images/cover_sedan_silver.png',
+    hoverImage: 'images/fabrics/fabric_silver_detail_1792065510922.jpg',
     rating: 4.8,
     reviews: 35,
     badge: 'UV HEAT SHIELD',
     fitMake: 'Toyota',
     fitModel: 'Corolla',
     bodyStyle: 'Sedan',
-    shortDesc: 'Reflective aluminum exterior layer blocks 99% UV radiation and reduces interior cabin temperature by up to 25°C.',
-    fabricSpecs: 'Reflective Aluminum Foil + High-Density Micro-Pores + Fleece',
+    shortDesc: 'High-performance solar heat reflector cover. Deflects intense sunlight and keeps interior cabin cool during peak summer heat.',
+    fabricSpecs: 'Reflective Silver-Coated Aluminum Foil + High-Density Micro-Pores',
     waterproofRating: '8,500mm Hydrostatic Head',
-    uvProtection: '99.9% Thermal Heat Reflector',
-    guarantee: '1-Year Heat Resistance Warranty',
+    uvProtection: '99.5% Solar Heat & UV Reflector',
+    guarantee: '2-Year UV Anti-Degradation Warranty',
     sizesAvailable: ['Medium (Corolla / Elantra)', 'Large (Camry / Accord)', 'XL (Mercedes S-Class)']
   },
   {
     id: 3,
-    name: 'AutoShield Fortuner 4x4 Heavy Duty SUV Cover',
+    name: 'AutoShield Oxford Polyester (600D) Heavy Armor',
     cat: 'SUV Covers',
-    price: 8999,
-    old: 10999,
-    image: 'images/cat_suv_cover.png',
+    price: 6499,
+    old: 8499,
+    image: 'images/cover_sedan_black.png',
+    hoverImage: 'images/fabrics/fabric_oxford_detail_1792065033171.jpg',
     rating: 5.0,
     reviews: 62,
-    badge: 'HEAVY DUTY',
+    badge: 'ALL-WEATHER BEAST',
     fitMake: 'Toyota',
     fitModel: 'Fortuner',
     bodyStyle: 'SUV',
-    shortDesc: 'Designed specifically for full-size 7-seater SUVs. Extra height profile with heavy windproof buckle straps.',
-    fabricSpecs: '400D Heavy Duty Oxford Polyester + Rubber Coating + Plush Inner Velvet',
-    waterproofRating: '12,000mm Hydrostatic Head',
-    uvProtection: '98.8% Sun Block',
-    guarantee: '3-Year Heavy Duty Warranty',
+    shortDesc: 'Strong and durable woven fabric with water-resistant coating. Best suited for monsoon rains and outdoor street parking.',
+    fabricSpecs: '600D Heavy Duty Oxford Polyester + Hydrophobic PU Coating',
+    waterproofRating: '10,000mm Rainproof Barrier',
+    uvProtection: '99% Sun UV Shield',
+    guarantee: '2-Year Extreme Durability Warranty',
     sizesAvailable: ['Fortuner Fit', 'Prado Fit', 'Land Cruiser / Patrol Fit']
   },
   {
     id: 4,
-    name: 'AutoShield Tucson All-Weather Crossover Cover',
+    name: 'AutoShield Multi-Layer Composite All-Weather Armor',
     cat: 'SUV Covers',
     price: 8499,
-    old: 9999,
-    image: 'images/hero_car_cover.png',
-    rating: 4.7,
+    old: 10999,
+    image: 'images/fabrics/fabric_multilayer_cover_1792065264013.jpg',
+    hoverImage: 'images/fabrics/fabric_multilayer_detail_1792065321993.jpg',
+    rating: 4.9,
     reviews: 29,
-    badge: 'ALL WEATHER',
+    badge: 'FLAGSHIP PROTECTION',
     fitMake: 'Hyundai',
     fitModel: 'Tucson',
     bodyStyle: 'SUV',
-    shortDesc: 'Custom tailored cover for mid-size compact crossovers like Tucson, Sportage, MG HS, and Haval Jolion.',
-    fabricSpecs: 'Triple-Layered WeatherGuard Fabric + Reinforced Mirror Pockets',
-    waterproofRating: '9,500mm Hydrostatic Head',
-    uvProtection: '99.0% UV Deflector',
-    guarantee: '2-Year Stitching Warranty',
+    shortDesc: 'Multi-layer composite flagship cover engineered for optimal balance of water resistance, dust defense, and breathability.',
+    fabricSpecs: '3-Layer Composite (Aluminum Film + PE Waterproof Membrane + Soft Fleece)',
+    waterproofRating: '12,000mm Hydrostatic Head',
+    uvProtection: '99.9% Solar Heat Reflection',
+    guarantee: '3-Year All-Weather Guarantee',
     sizesAvailable: ['Crossover M (Tucson / Sportage)', 'Crossover L (Haval H6 / MG HS)']
   },
   {
     id: 5,
-    name: 'AutoShield Swift Hatchback Tailored Cover',
+    name: 'AutoShield Polyester Taffeta Daily Hatchback Cover',
     cat: 'Car Covers',
-    price: 5999,
-    old: 7499,
-    image: 'images/cover_sedan_black.png',
-    rating: 4.6,
+    price: 4299,
+    old: 5499,
+    image: 'images/fabrics/fabric_taffeta_cover_1792065077696.jpg',
+    hoverImage: 'images/fabrics/fabric_taffeta_detail_1792065132708.jpg',
+    rating: 4.7,
     reviews: 22,
-    badge: 'COMPACT FIT',
+    badge: 'DAILY ESSENTIAL',
     fitMake: 'Suzuki',
     fitModel: 'Swift',
     bodyStyle: 'Hatchback',
-    shortDesc: 'Precision contoured cover for hatchbacks like Swift, Alto, Cultus, Vitz, and Picanto with fast zip access.',
-    fabricSpecs: 'Soft-Touch Weather-Tite Fabric + Double Stitched Hems',
-    waterproofRating: '8,000mm Hydrostatic Head',
-    uvProtection: '97.5% UV Block',
-    guarantee: '1-Year Replacement Guarantee',
+    shortDesc: 'Lightweight and easily foldable everyday cover. The ideal choice for daily commuters and everyday office parking.',
+    fabricSpecs: 'Polyester Taffeta + Fast-Folding Compact + Sunlight Deflector',
+    waterproofRating: 'Water Repellent (Light Rain)',
+    uvProtection: '95% Sunlight Blocker',
+    guarantee: '1-Year Daily Use Warranty',
     sizesAvailable: ['Micro (Alto / Every)', 'Compact (Swift / Cultus / Vitz)', 'Hatchback (Aqua / Note)']
   },
   {
     id: 6,
-    name: 'AutoShield Waterproof Superbike Body Cover',
+    name: 'AutoShield Waterproof Ripstop Nylon Superbike Cover',
     cat: 'Bike Covers',
     price: 2999,
     old: 3999,
     image: 'images/cat_bike_cover.png',
+    hoverImage: 'images/fabrics/fabric_ripstop_detail.svg',
     rating: 4.9,
     reviews: 41,
-    badge: 'BIKE SHIELD',
+    badge: 'MILITARY TOUGH',
     fitMake: 'Yamaha',
     fitModel: 'Heavy Bike',
     bodyStyle: 'Bike',
-    shortDesc: '100% waterproof motorcycle body cover with elastic double-stitched bottom hem and lock grommets.',
-    fabricSpecs: '210T Ripstop Nylon + Heat Shield Exhaust Panel',
+    shortDesc: 'Lightweight and tear-resistant tactical grid construction. Resists strong windstorms and tearing during travel.',
+    fabricSpecs: '210T Ripstop Nylon Tactical Grid + 10,000mm Hydrophobic PU Barrier',
     waterproofRating: '10,000mm Hydrostatic Head',
-    uvProtection: '98.0% UV Shield',
-    guarantee: '1-Year Tearproof Guarantee',
+    uvProtection: '98.5% UV & Wind Shield',
+    guarantee: '2-Year Anti-Tear Guarantee',
     sizesAvailable: ['Standard (70cc - 150cc)', 'Heavy Bike (250cc - 1000cc)', 'Touring Adventure Bike']
   },
   {
     id: 7,
-    name: 'AutoShield Tactical Camo All-Terrain Cover',
+    name: 'AutoShield Cotton / Flannel-Lined Paint Preserver Cover',
     cat: 'SUV Covers',
-    price: 9499,
-    old: 11999,
-    image: 'images/cat_suv_cover.png',
+    price: 7499,
+    old: 9499,
+    image: 'images/fabrics/fabric_flannel_cover_1792065585097.jpg',
+    hoverImage: 'images/fabrics/fabric_flannel_detail_1792065659011.jpg',
     rating: 4.9,
-    reviews: 19,
-    badge: 'TACTICAL EDITION',
+    reviews: 38,
+    badge: 'PAINT PRESERVER',
     fitMake: 'Toyota',
     fitModel: 'Hilux Revo',
     bodyStyle: 'SUV',
-    shortDesc: 'Military-grade camouflage pattern water repellant body cover for 4x4 offroad jeeps and pickup trucks.',
-    fabricSpecs: '600D Military Grade Camo Polyester + Polyurethane Coating',
-    waterproofRating: '15,000mm Hydrostatic Head',
-    uvProtection: '99.9% Military Sun Block',
-    guarantee: '3-Year Extreme Conditions Warranty',
+    shortDesc: 'Ultra-soft inner flannel lining shields paint against friction and swirl marks. Ideal for garage storage and paint preservation.',
+    fabricSpecs: 'Cloud-Soft White Cotton Flannel Inner Lining + Paint Scratch Guard',
+    waterproofRating: 'Composite Outer / Soft Cotton Inner',
+    uvProtection: '98% Garage Dust & Sun Guard',
+    guarantee: '2-Year Soft-Lining Guarantee',
     sizesAvailable: ['Revo / D-Max Pickup', 'Jeep Wrangler / FJ Cruiser', 'Full Size 4x4']
   },
   {
     id: 8,
-    name: 'AutoShield Matte Black Luxury Sports Cover',
+    name: 'AutoShield Microfiber Anti-Scratch Luxury Sports Cover',
     cat: 'Car Covers',
-    price: 9999,
-    old: 12999,
-    image: 'images/product_silver_cover.png',
+    price: 7999,
+    old: 9999,
+    image: 'images/fabrics/fabric_microfiber_cover_1792064890140.jpg',
+    hoverImage: 'images/fabrics/fabric_microfiber_detail_1792064925457.jpg',
     rating: 5.0,
     reviews: 54,
-    badge: 'LUXURY EDITION',
+    badge: 'PREMIUM LUXURY',
     fitMake: 'Audi',
     fitModel: 'A6',
     bodyStyle: 'Sedan',
-    shortDesc: 'Showroom grade indoor & outdoor satin-touch stretch cover for luxury sports coupes and executive sedans.',
-    fabricSpecs: 'Breathable Velvet Stretch Lycra + Satin Finish Outer',
-    waterproofRating: '7,000mm Hydrostatic Head',
-    uvProtection: '99.0% UV Shield',
-    guarantee: '3-Year Showroom Coating Protection Warranty',
+    shortDesc: 'Silky soft texture with a smooth luxury finish. Prevents paint scratching on delicate clear-coats. Premium option for indoor protection.',
+    fabricSpecs: 'Plush Velvet Microfiber Weave + Breathable Satin Luxury Finish',
+    waterproofRating: 'Semi-Breathable / Indoor',
+    uvProtection: '98% Indoor UV & Glare Block',
+    guarantee: '2-Year Showroom Finish Warranty',
     sizesAvailable: ['Luxury Sedan (Audi A4/A6, BMW 3/5 Series)', 'Sports Coupe (Mustang, C-Class Coupe)']
   },
   {
@@ -376,6 +386,75 @@ const vehicleModels = {
 
 // INITIALIZATION
 document.addEventListener('DOMContentLoaded', () => {
+  // ===== ULTRA-FAST PAGE LOADER =====
+  const loader = document.getElementById('page-loader');
+  if (loader) {
+    const dismissLoader = () => {
+      loader.classList.add('loaded');
+      setTimeout(() => {
+        if (loader.parentNode) loader.style.display = 'none';
+      }, 300);
+    };
+    // Fast fadeout after brief smooth entrance
+    setTimeout(dismissLoader, 180);
+    window.addEventListener('load', dismissLoader);
+  }
+
+  // ===== HEADER SCROLL EFFECT =====
+  const header = document.getElementById('mainHeader');
+  if (header) {
+    const onScroll = () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  // ===== SCROLL REVEAL ANIMATIONS =====
+  const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+  if (revealEls.length) {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+
+    revealEls.forEach(el => observer.observe(el));
+  }
+
+  // ===== STATS COUNTER ANIMATION =====
+  const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+  if (statNumbers.length) {
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'), 10);
+          const suffix = el.querySelector('.stat-suffix')?.outerHTML || '';
+          const duration = 1800;
+          const step = 16;
+          const increment = target / (duration / step);
+          let current = 0;
+          
+          const timer = setInterval(() => {
+            current = Math.min(current + increment, target);
+            el.innerHTML = Math.floor(current).toLocaleString('en-PK') + suffix;
+            if (current >= target) clearInterval(timer);
+          }, step);
+          
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.3 });
+    
+    statNumbers.forEach(el => counterObserver.observe(el));
+  }
+
+  // ===== TESTIMONIALS =====
+  renderTestimonials();
+
   updateBadges();
   renderCart();
   
@@ -395,6 +474,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderHomeProducts();
   }
 
+  // Sync latest products from MySQL database
+  syncProductsFromBackend();
+
+  // Render Top 8 Fabrics Showcase if on page
+  renderFabricsShowcase();
+
   // Global Search Input
   const searchInput = document.getElementById('searchInput');
   if (searchInput) {
@@ -407,7 +492,648 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // ===== CART BACKDROP =====
+  const backdrop = document.getElementById('cartBackdrop');
+  if (backdrop) {
+    backdrop.addEventListener('click', closeCartDrawer);
+  }
 });
+
+// ===== DYNAMIC MYSQL PRODUCT SYNC =====
+async function syncProductsFromBackend() {
+  try {
+    const res = await fetch(`${BASE_URL}?action=get_products`);
+    if (!res.ok) return;
+    const data = await res.json();
+    if (data && data.status === 'success' && Array.isArray(data.products) && data.products.length > 0) {
+      productsData = data.products;
+      const curPath = window.location.pathname.toLowerCase();
+      if (curPath.includes('shop.html')) {
+        renderShopGrid();
+      } else if (curPath.includes('product-detail.html')) {
+        initProductDetailPage();
+      } else if (!curPath.includes('cart.html') && !curPath.includes('categories.html')) {
+        renderHomeProducts();
+      }
+    }
+  } catch (err) {
+    console.info('AutoShield: Operating with local catalog fallback.');
+  }
+}
+
+
+// ==========================================================================
+// TOP 8 CAR COVER FABRICS SHOWCASE — AUTOSHIELD SHOWROOM DATA & LOGIC
+// ==========================================================================
+const fabricsData = [
+  {
+    id: 'fabric-1',
+    number: 1,
+    name: 'Non-Woven Fabric',
+    urduTitle: 'Non-Woven Fabric — Lightweight & Budget Friendly',
+    category: 'indoor',
+    badge: 'BUDGET FRIENDLY',
+    price: 3499,
+    oldPrice: 4499,
+    priceRange: 'PKR 2,499 – PKR 4,500',
+    bestFor: 'Indoor Garage & Light Scratch Protection',
+    coverImg: 'images/fabrics/fabric_nonwoven_1.jpg',
+    detailImg: 'images/fabrics/fabric_nonwoven_2.jpg',
+    points: [
+      'Lightweight and budget-friendly.',
+      'Reliable dust and light scratch protection.',
+      'Ideal for cost-effective indoor vehicle parking.'
+    ],
+    materials: 'Breathable spunbond polypropylene with dust-barrier micropores',
+    features: ['Lightweight Spunbond', 'Dust Barrier', 'Soft Surface'],
+    specs: {
+      waterproof: 'Dustproof / Light Indoor',
+      uvProtection: 'Basic Garage Protection',
+      warranty: '6-Month Stitching Warranty',
+      climateNote: 'Best for covered garages and car porches in Lahore; shields from daily dust without trapping heat.'
+    }
+  },
+  {
+    id: 'fabric-2',
+    number: 2,
+    name: 'Microfiber Fabric',
+    urduTitle: 'Microfiber Fabric — Ultra-Soft Paint Protection',
+    category: 'indoor',
+    badge: 'PREMIUM LUXURY',
+    price: 18500,
+    oldPrice: 24500,
+    priceRange: 'PKR 15,500 – PKR 32,500',
+    bestFor: 'Luxury Clear-Coat Care & Anti-Swirl',
+    coverImg: 'images/fabrics/fabric_microfiber_1.jpg',
+    detailImg: 'images/fabrics/fabric_microfiber_2.jpg',
+    points: [
+      'Silky soft texture and smooth gloss finish.',
+      'Helps protect clear-coat paint surfaces from scratches and swirl marks.',
+      'Top-rated choice for premium indoor vehicle storage.'
+    ],
+    materials: 'High-grade ultra-soft micro-filaments & velvety fleece backing',
+    features: ['Velvet Microfiber', 'Anti-Scratch & Anti-Swirl', 'Gentle on Clear-Coats'],
+    specs: {
+      waterproof: 'Semi-Breathable Luxury',
+      uvProtection: '99% Indoor UV & Glare Block',
+      warranty: '3-Year Showroom Finish Warranty',
+      climateNote: 'Popular choice at PakWheels & SehgalMotors. Gentle on clear-coats; custom-fit for Toyota, Honda, BMW, Audi, and Kia.'
+    }
+  },
+  {
+    id: 'fabric-3',
+    number: 3,
+    name: 'Oxford Polyester (210D / 300D / 600D)',
+    urduTitle: 'Oxford Polyester — Heavy Duty & Water-Resistant',
+    category: 'outdoor',
+    badge: 'ALL-WEATHER BEAST',
+    price: 6499,
+    oldPrice: 8499,
+    priceRange: 'PKR 3,250 – PKR 7,700',
+    bestFor: 'Heavy Rain, Monsoon & Rough Outdoor Parking',
+    coverImg: 'images/fabrics/fabric_oxford_1.jpg',
+    detailImg: 'images/fabrics/fabric_oxford_2.jpg',
+    points: [
+      'High-strength, durable heavy-woven fabric.',
+      'Water-resistant coated for reliable outdoor weather protection.',
+      'Long-lasting durability based on denier thickness and PU coating.'
+    ],
+    materials: 'Outer 210 GSM waterproof/dustproof PVC with a soft white inner cotton lining to prevent scratches',
+    features: ['Heavy Woven Oxford', 'Hydrophobic PU Coating', 'Wind Straps & Mirror Pockets'],
+    specs: {
+      waterproof: '10,000mm Rainproof Barrier',
+      uvProtection: '99% Sun UV Shield',
+      warranty: '2-Year Extreme Durability Warranty',
+      climateNote: 'Equipped with side-mirror pockets, door zipper access, and anti-wind under-car buckle straps for sudden Lahore gusts.'
+    }
+  },
+  {
+    id: 'fabric-4',
+    number: 4,
+    name: 'Polyester Taffeta',
+    urduTitle: 'Polyester Taffeta — Lightweight Everyday Cover',
+    category: 'outdoor',
+    badge: 'DAILY ESSENTIAL',
+    price: 4299,
+    oldPrice: 5499,
+    priceRange: 'PKR 2,399 – PKR 5,800',
+    bestFor: 'Everyday Commuter & Quick Daily Folding',
+    coverImg: 'images/fabrics/fabric_taffeta_1.jpg',
+    detailImg: 'images/fabrics/fabric_taffeta_2.jpg',
+    points: [
+      'Lightweight and easily foldable for quick handling.',
+      'Specialized surface coating shields against dust and sunlight.',
+      'Most popular option for daily commute and office parking.'
+    ],
+    materials: 'High-density lightweight polyester taffeta with UV & dust barrier coating',
+    features: ['Easy Compact Fold', 'Dust & Sun Coating', 'Smooth Trunk Storage'],
+    specs: {
+      waterproof: 'Water Repellent (Light Rain)',
+      uvProtection: '96% Sunlight Blocker',
+      warranty: '1-Year Daily Use Warranty',
+      climateNote: 'Recommended for daily office cars; lightweight design enables quick single-person folding in 60 seconds.'
+    }
+  },
+  {
+    id: 'fabric-5',
+    number: 5,
+    name: 'Multi-Layer Fabric',
+    urduTitle: 'Multi-Layer Fabric — 5-Layer Composite Weather Armor',
+    category: 'outdoor',
+    badge: 'FLAGSHIP PROTECTION',
+    price: 8999,
+    oldPrice: 11999,
+    priceRange: 'PKR 6,500 – PKR 13,500',
+    bestFor: 'Complete All-Weather, Water & Heat Defense',
+    coverImg: 'images/fabrics/fabric_multilayer_1.jpg',
+    detailImg: 'images/fabrics/fabric_multilayer_2.jpg',
+    points: [
+      'Engineered with 5 high-performance composite layers.',
+      'Delivers optimal balance of water repellency, dust protection, and breathability.',
+      'Premium choice for all-weather outdoor protection.'
+    ],
+    materials: '5-Layer Composite (Waterproof PE + Aluminum Thermal + Microporous Membrane + EVA + Soft Cotton Fleece)',
+    features: ['5-Layer Composite Armor', 'Driver Door Zipper', 'Under-Car Buckle Straps'],
+    specs: {
+      waterproof: '12,000mm Hydrostatic Head',
+      uvProtection: '99.9% Solar Heat Reflection',
+      warranty: '3-Year All-Weather Guarantee',
+      climateNote: 'Semi-breathable structure prevents morning condensation under Lahore sun; heavy wind buckles keep cover firmly locked.'
+    }
+  },
+  {
+    id: 'fabric-6',
+    number: 6,
+    name: 'Reflective Silver-Coated Fabric',
+    urduTitle: 'Reflective Silver-Coated Fabric — Solar Heat & UV Deflector',
+    category: 'uv',
+    badge: 'UV HEAT SHIELD',
+    price: 5999,
+    oldPrice: 7499,
+    priceRange: 'PKR 3,850 – PKR 7,200',
+    bestFor: 'Pakistan Scorching Summer & Cabin Heat Reduction',
+    coverImg: 'images/fabrics/fabric_silver_1.jpg',
+    detailImg: 'images/fabrics/fabric_silver_2.jpg',
+    points: [
+      'Reflects intense solar rays and reduces cabin heat build-up.',
+      'Highly effective in intense summer heat and sunny climates.',
+      'Premium UV-resistant aluminized coating protects dashboard and interiors.'
+    ],
+    materials: 'Aluminized micro-foil outer layer with insulated cotton heat barrier backing',
+    features: ['Aluminum Foil Coating', 'Cabin Cool (-25°C)', 'UV-Proof Reflective Seal'],
+    specs: {
+      waterproof: '100% Water Resistant',
+      uvProtection: '99.9% Solar Heat & UV Reflector',
+      warranty: '2-Year Heat Shield Guarantee',
+      climateNote: 'Crucial for 45°C+ summer sun in Lahore, Multan, Faisalabad & Sindh; prevents dashboard cracking and seat leather peeling.'
+    }
+  },
+  {
+    id: 'fabric-7',
+    number: 7,
+    name: 'Cotton / Flannel-Lined Fabric',
+    urduTitle: 'Cotton / Flannel-Lined Fabric — Ultra-Soft Anti-Scratch Inner Lining',
+    category: 'indoor',
+    badge: 'PAINT PRESERVER',
+    price: 7499,
+    oldPrice: 9499,
+    priceRange: 'PKR 5,500 – PKR 11,800',
+    bestFor: 'Zero Paint Rubbing & Garage Luxury Storage',
+    coverImg: 'images/fabrics/fabric_flannel_1.jpg',
+    detailImg: 'images/fabrics/fabric_flannel_2.jpg',
+    points: [
+      'Soft inner cotton flannel lining protects paint against friction and rubbing.',
+      'Perfect for sheltered garages and luxury detailing preservation.',
+      'Soft lining paired with protective water-resistant outer composite.'
+    ],
+    materials: 'Plush cloud-soft white cotton flannel lining with composite outer protective shell',
+    features: ['Cloud-Soft Flannel Lining', 'Zero Clear-Coat Rubbing', 'Anti-Swirl Polish Guard'],
+    specs: {
+      waterproof: 'Composite Outer / Soft Cotton Inner',
+      uvProtection: '98% Garage Dust & Sun Guard',
+      warranty: '2-Year Soft-Lining Guarantee',
+      climateNote: 'Top choice for sheltered parking & garages in Lahore where luxury ceramic coats and mirror polishes must be preserved.'
+    }
+  },
+  {
+    id: 'fabric-8',
+    number: 8,
+    name: 'Ripstop Nylon',
+    urduTitle: 'Ripstop Nylon — Tear-Resistant & Heavy Duty',
+    category: 'outdoor',
+    badge: 'MILITARY TOUGH',
+    price: 6999,
+    oldPrice: 8999,
+    priceRange: 'PKR 4,200 – PKR 8,900',
+    bestFor: 'High Wind, Anti-Tear Travel & Camping',
+    coverImg: 'images/fabrics/fabric_ripstop_1.png',
+    detailImg: 'images/fabrics/fabric_ripstop_2.svg',
+    points: [
+      'Lightweight tactical crosshatched tear-resistant construction.',
+      'Ideal for long-distance travel, highway parking, and outdoor exposure.',
+      'Hydrophobic PU coating delivers dependable water resistance.'
+    ],
+    materials: '210T High-Tensile Ripstop Nylon with square reinforcement grid and PU waterproof film',
+    features: ['Interlocking Grid Weave', 'High-Tensile Anti-Tear', 'Travel Compression Pouch'],
+    specs: {
+      waterproof: '10,000mm PU Coated',
+      uvProtection: '98.5% UV & Wind Shield',
+      warranty: '2-Year Anti-Tear Guarantee',
+      climateNote: 'Engineered for extreme travel; crosshatched square grid stops tears from spreading during severe winds.'
+    }
+  }
+];
+
+let currentFabricFilter = 'all';
+
+function renderFabricsShowcase(cat = 'all') {
+  const grid = document.getElementById('fabricsGrid');
+  if (!grid) return;
+
+  const filtered = cat === 'all' 
+    ? fabricsData 
+    : fabricsData.filter(f => f.category === cat || (cat === 'uv' && (f.id === 'fabric-6' || f.id === 'fabric-5')));
+
+  grid.innerHTML = filtered.map(f => {
+    const pointsHTML = f.points.map(p => `
+      <li>
+        <span class="fabric-point-check">✔</span>
+        <span>${p}</span>
+      </li>
+    `).join('');
+
+    return `
+      <article class="fabric-card" data-fabric-id="${f.id}" id="card-${f.id}">
+        <!-- Showroom Stage: Dual-Image on Hover with Macro Detail HUD -->
+        <div class="fabric-stage" onclick="toggleFabricDetail('${f.id}')" title="Hover or tap to switch between Showroom Cover and 100x Texture Detail">
+          <div class="fabric-stage-top">
+            <span class="fabric-pill-num">FABRIC #${f.number}</span>
+            <span class="fabric-pill-badge">${f.badge}</span>
+          </div>
+
+          <div class="fabric-view-pill">
+            <span>⇄</span>
+            <span>Hover: Macro Detail</span>
+          </div>
+
+          <!-- Primary: Showroom Vehicle View -->
+          <img class="fabric-img-main" src="${f.coverImg}" alt="${f.name} on Car" loading="lazy" decoding="async">
+
+          <!-- Secondary: Fabric Detail Macro / Cross-section on Hover -->
+          <img class="fabric-img-hover" src="${f.detailImg}" alt="${f.name} Microscopic Detail Texture" loading="lazy" decoding="async">
+
+          <!-- Technical HUD Overlay on the Second Image (Fulfills: aus image may aus fabric ki sari details ho) -->
+          <div class="fabric-stage-hud">
+            <div class="hud-tag">🔬 100x Macro Texture Inspection</div>
+            <div class="hud-title">${f.name}</div>
+            
+            <div class="hud-specs-row">
+              <div class="hud-spec-chip">
+                <span class="h-label">Material Structure</span>
+                <span class="h-val">${f.features[0]}</span>
+              </div>
+              <div class="hud-spec-chip">
+                <span class="h-label">Protection Level</span>
+                <span class="h-val">${f.specs.waterproof}</span>
+              </div>
+              <div class="hud-spec-chip">
+                <span class="h-label">UV Heat Shield</span>
+                <span class="h-val">${f.specs.uvProtection}</span>
+              </div>
+              <div class="hud-spec-chip">
+                <span class="h-label">Price Range</span>
+                <span class="h-val">${f.priceRange}</span>
+              </div>
+            </div>
+
+            <div class="hud-action-row">
+              <button class="hud-order-btn" onclick="event.stopPropagation(); openFabricOrderModal('${f.id}')">
+                ⚡ Order ${f.name} Now
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Body Details -->
+        <div class="fabric-body">
+          <div class="fabric-title-wrap">
+            <h3 class="fabric-title">${f.number}. ${f.name}</h3>
+            <div class="fabric-urdu-title">${f.urduTitle}</div>
+          </div>
+
+          <div class="fabric-bestfor-pill">
+            <span>🎯 Best For:</span>
+            <strong>${f.bestFor}</strong>
+          </div>
+
+          <!-- Verbatim Points from User Prompt -->
+          <ul class="fabric-points">
+            ${pointsHTML}
+          </ul>
+
+          <!-- Materials & Construction Specs -->
+          <div class="fabric-materials-box" style="background:rgba(255,255,255,0.03); border:1px solid var(--border); border-radius:var(--radius-sm); padding:8px 10px; margin-bottom:12px; font-size:0.78rem; color:var(--text-secondary);">
+            <strong style="color:#38bdf8; display:block; margin-bottom:2px;">🧵 Materials & Features:</strong>
+            ${f.materials}. Includes side-mirror pockets, door zipper access & underbody wind straps.
+          </div>
+
+          <!-- Lahore Climate Suitability -->
+          <div class="fabric-climate-box">
+            <strong>🇵🇰 Lahore Climate Guide:</strong> ${f.specs.climateNote}
+          </div>
+
+          <!-- Footer Actions & Pricing -->
+          <div class="fabric-footer">
+            <div class="fabric-price-row">
+              <div>
+                <span class="fabric-price-val">${formatMoney(f.price)}</span>
+                <span class="fabric-price-old">${formatMoney(f.oldPrice)}</span>
+              </div>
+              <span class="fabric-warranty-badge">🛡️ ${f.specs.warranty}</span>
+            </div>
+
+            <div class="fabric-actions">
+              <button class="fabric-btn-order" onclick="openFabricOrderModal('${f.id}')" title="Order ${f.name} with custom car sizing">
+                <span>⚡ Order Fabric</span>
+              </button>
+              <button class="fabric-btn-cart" onclick="addFabricToCart('${f.id}')" title="Add ${f.name} to Cart">
+                <span>+ Cart</span>
+              </button>
+              <button class="fabric-btn-wa" onclick="orderFabricViaWhatsApp('${f.id}')" title="Direct WhatsApp Order for ${f.name}" aria-label="Order on WhatsApp">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
+}
+
+function filterFabrics(cat, btn) {
+  currentFabricFilter = cat;
+  document.querySelectorAll('.fabric-tab-btn').forEach(b => b.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  renderFabricsShowcase(cat);
+}
+
+function toggleFabricDetail(fabricId) {
+  const card = document.getElementById(`card-${fabricId}`);
+  if (card) {
+    card.classList.toggle('active-alt');
+  }
+}
+
+// ===== QUICK FABRIC ORDER MODAL CONTROLLERS =====
+function openFabricOrderModal(fabricId) {
+  const f = fabricsData.find(x => x.id === fabricId) || fabricsData[0];
+  const modal = document.getElementById('fabricOrderModal');
+  if (!modal) return;
+
+  const headingEl = document.getElementById('modalFabricHeading');
+  const titleEl = document.getElementById('modalFabricTitle');
+  const thumbEl = document.getElementById('modalFabricThumb');
+  const priceEl = document.getElementById('modalFabricPrice');
+  const hiddenIdEl = document.getElementById('modalSelectedFabricId');
+
+  if (headingEl) headingEl.textContent = `Order ${f.name} Cover`;
+  if (titleEl) titleEl.textContent = `${f.number}. ${f.name} — ${f.badge}`;
+  if (thumbEl) thumbEl.src = f.coverImg;
+  if (priceEl) priceEl.textContent = `Price: ${formatMoney(f.price)} (${f.priceRange}) • Free Nationwide Delivery`;
+  if (hiddenIdEl) hiddenIdEl.value = f.id;
+
+  // Pre-fill model if user previously searched in search bar
+  const searched = document.getElementById('searchInput')?.value.trim() || document.getElementById('carDirectorySearch')?.value.trim();
+  const carModelInput = document.getElementById('modalCarModel');
+  if (searched && carModelInput && !carModelInput.value) {
+    carModelInput.value = searched;
+  }
+
+  modal.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFabricOrderModal(event) {
+  if (event && event.target && event.target.id !== 'fabricOrderModal' && !event.target.classList.contains('modal-close-btn')) {
+    return;
+  }
+  const modal = document.getElementById('fabricOrderModal');
+  if (modal) {
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+}
+
+function handleModalMakeChange(make) {
+  const modelInput = document.getElementById('modalCarModel');
+  if (!modelInput) return;
+  const placeholders = {
+    'Suzuki': 'e.g. Alto 660cc / Cultus / Swift / Wagon R',
+    'Toyota': 'e.g. Corolla Grande / Yaris / Fortuner Sigma 4',
+    'Honda': 'e.g. Civic Oriel / RS / City Aspire / BR-V',
+    'Hyundai': 'e.g. Tucson / Elantra GLS / Sonata',
+    'Kia': 'e.g. Sportage FWD/AWD / Picanto / Stonic',
+    'Changan': 'e.g. Alsvin Lumiere / Oshan X7',
+    'MG': 'e.g. MG HS / ZS EV',
+    'Haval': 'e.g. Haval H6 / Jolion',
+    'Audi': 'e.g. Audi A4 / A6 / Q7',
+    'BMW': 'e.g. BMW 3 Series / 5 Series',
+    'Mercedes-Benz': 'e.g. Mercedes C200 / E200 / S-Class'
+  };
+  modelInput.placeholder = placeholders[make] || 'e.g. Car Model, Generation & Year';
+}
+
+function submitFabricOrderViaWhatsApp() {
+  const fabricId = document.getElementById('modalSelectedFabricId')?.value || 'fabric-3';
+  const f = fabricsData.find(x => x.id === fabricId) || fabricsData[2];
+
+  const make = document.getElementById('modalCarMake')?.value.trim() || 'Custom Vehicle';
+  const model = document.getElementById('modalCarModel')?.value.trim() || 'Standard Fitment';
+  const name = document.getElementById('modalCustName')?.value.trim() || 'Valued Customer';
+  const phone = document.getElementById('modalCustPhone')?.value.trim() || '';
+  const city = document.getElementById('modalCustCity')?.value.trim() || 'Lahore';
+  const address = document.getElementById('modalCustAddress')?.value.trim() || '';
+  const payment = document.getElementById('modalPayment')?.value || 'Cash on Delivery (COD)';
+
+  const orderId = 'AS-FAB-' + Math.floor(100000 + Math.random() * 900000);
+  const orderDate = new Date().toLocaleString('en-PK', { dateStyle: 'medium', timeStyle: 'short' });
+
+  let msg = `🛡️ *NEW FABRIC ORDER — AUTOSHIELD CAR COVERS*\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += `📋 *Order ID:* #${orderId}\n`;
+  msg += `📅 *Date:* ${orderDate}\n\n`;
+  msg += `🧵 *SELECTED FABRIC:* ${f.name}\n`;
+  msg += `🏷️ *Fabric Tier:* #${f.number} • ${f.badge}\n`;
+  msg += `✨ *Best For:* ${f.bestFor}\n`;
+  msg += `💰 *Fabric Price:* ${formatMoney(f.price)} (${f.priceRange})\n`;
+  msg += `🛡️ *Warranty:* ${f.specs.warranty}\n\n`;
+  msg += `🚘 *VEHICLE DETAILS:*\n`;
+  msg += `• *Make & Model:* ${make} ${model}\n`;
+  msg += `• *City:* ${city}\n\n`;
+  msg += `👤 *CUSTOMER DETAILS:*\n`;
+  msg += `• *Name:* ${name}\n`;
+  if (phone) msg += `• *Phone:* ${phone}\n`;
+  if (address) msg += `• *Delivery Address:* ${address}\n`;
+  msg += `• *Payment Method:* ${payment}\n`;
+  msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
+  msg += `_Please confirm my custom ${f.name} cover order and share dispatch tracking._`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+  closeFabricOrderModal();
+  showToast(`📋 Order for ${f.name} initiated on WhatsApp!`);
+}
+
+function handleFabricModalSubmit(event) {
+  event.preventDefault();
+
+  const fabricId = document.getElementById('modalSelectedFabricId')?.value || 'fabric-3';
+  const f = fabricsData.find(x => x.id === fabricId) || fabricsData[2];
+
+  const make = document.getElementById('modalCarMake')?.value.trim();
+  const model = document.getElementById('modalCarModel')?.value.trim();
+  const name = document.getElementById('modalCustName')?.value.trim();
+  const phone = document.getElementById('modalCustPhone')?.value.trim();
+  const city = document.getElementById('modalCustCity')?.value.trim();
+  const address = document.getElementById('modalCustAddress')?.value.trim();
+  const payment = document.getElementById('modalPayment')?.value || 'Cash on Delivery (COD)';
+
+  if (!make || !model || !name || !phone || !city || !address) {
+    showToast('⚠️ Please fill out all required fields');
+    return;
+  }
+
+  const orderId = 'AS-FAB-' + Math.floor(100000 + Math.random() * 900000);
+  const orderDate = new Date().toLocaleString('en-PK', { dateStyle: 'medium', timeStyle: 'short' });
+
+  // Create order item with explicit fabric name
+  const orderItem = {
+    id: 300 + f.number,
+    name: `AutoShield ${f.name} Cover`,
+    cat: 'Fabric Custom Cover',
+    fabric: f.name,
+    price: f.price,
+    qty: 1,
+    image: f.coverImg,
+    fitMake: make,
+    fitModel: model
+  };
+
+  const orderData = {
+    orderId,
+    orderDate,
+    customer: { name, phone, city, address, payment, vehicle: `${make} ${model}`, fabric: f.name },
+    items: [orderItem],
+    total: f.price
+  };
+
+  // Save to history
+  try {
+    const ordersHistory = JSON.parse(localStorage.getItem('autoshield_orders') || '[]');
+    ordersHistory.unshift(orderData);
+    localStorage.setItem('autoshield_orders', JSON.stringify(ordersHistory));
+  } catch (err) {}
+
+  closeFabricOrderModal();
+
+  // Also initiate WhatsApp message for confirmation
+  submitFabricOrderViaWhatsApp();
+  showToast(`✅ Order Confirmed for ${f.name}!`);
+}
+
+function orderFabricViaWhatsApp(fabricId) {
+  const f = fabricsData.find(x => x.id === fabricId);
+  if (!f) return;
+  const carName = document.getElementById('searchInput')?.value.trim() || document.getElementById('carDirectorySearch')?.value.trim() || 'My Car';
+  
+  let text = `Hello AutoShield Pakistan! 🛡️\n\n`;
+  text += `I would like to order an *AutoShield Fabric Cover*:\n`;
+  text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+  text += `🧵 *Selected Fabric:* #${f.number}. ${f.name}\n`;
+  text += `🏷️ *Fabric Class:* ${f.badge}\n`;
+  text += `💰 *Showroom Price:* ${formatMoney(f.price)} (${f.priceRange})\n`;
+  text += `✨ *Best For:* ${f.bestFor}\n`;
+  text += `🛡️ *Warranty:* ${f.specs.warranty}\n`;
+  text += `🚘 *Car Model:* ${carName !== 'My Car' ? carName : '[Write your car make / model here]'}\n`;
+  text += `━━━━━━━━━━━━━━━━━━━━━\n`;
+  text += `Please confirm the exact size recommendation and delivery schedule. Thank you!`;
+
+  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
+
+function addFabricToCart(fabricId) {
+  const f = fabricsData.find(x => x.id === fabricId);
+  if (!f) return;
+  const carSearched = document.getElementById('searchInput')?.value.trim() || document.getElementById('carDirectorySearch')?.value.trim() || 'Custom Tailored';
+  
+  const cartItem = {
+    id: 300 + f.number,
+    name: `AutoShield ${f.name} Cover`,
+    cat: 'Fabric Custom Cover',
+    fabric: f.name,
+    price: f.price,
+    old: f.oldPrice,
+    image: f.coverImg,
+    fitMake: carSearched,
+    fitModel: f.name,
+    qty: 1
+  };
+  
+  const existing = cart.find(i => i.id === cartItem.id);
+  if (existing) {
+    existing.qty += 1;
+  } else {
+    cart.push(cartItem);
+  }
+  
+  updateBadges();
+  saveCart();
+  renderCart();
+  openCartDrawer();
+  showToast(`✅ ${f.name} added to cart!`);
+}
+
+
+// ===== TESTIMONIALS DATA & RENDER =====
+const testimonialsData = [
+  { name: 'Ahmed Raza', city: 'Lahore', stars: 5, text: 'Outstanding build quality! Ordered a custom cover for my Honda Civic and received a perfectly snug fit. Protects paint from dust and scratches.' },
+  { name: 'Sana Malik', city: 'Karachi', stars: 5, text: 'Delivered in just 3 days with Cash on Delivery. Both the stitching and material quality are top-notch. Highly recommended!' },
+  { name: 'Muhammad Bilal', city: 'Islamabad', stars: 5, text: 'Got the heavy-duty all-weather cover for Toyota Fortuner. The car stayed completely dry during heavy rainfall. Worth every rupee!' },
+  { name: 'Zainab Khan', city: 'Rawalpindi', stars: 5, text: 'Bought covers for two vehicles at home. Both fits are spot-on. The silver heat deflector significantly lowers AC cooling load!' },
+  { name: 'Ali Hassan', city: 'Multan', stars: 4, text: 'Great cover quality and snug fit. Packaging was very secure and WhatsApp support provided immediate guidance.' },
+  { name: 'Farhan Sheikh', city: 'Faisalabad', stars: 5, text: 'Previously bought a local cover that degraded in 2 months. Using AutoShield for over 6 months now and it still looks brand new.' },
+  { name: 'Hira Baig', city: 'Peshawar', stars: 5, text: 'Purchased for Suzuki Alto. Snug tailored fit. Protects against scorching sunlight and keeps the cabin cool. Very happy with it!' },
+  { name: 'Omar Siddiqui', city: 'Quetta', stars: 5, text: 'Fast delivery time and excellent product finish. The soft inner lining preserves clear-coat wax and polish. 5 stars!' },
+  { name: 'Nadia Iqbal', city: 'Lahore', stars: 5, text: 'Ordered for Corolla Cross. Looks very sleek and professional; fabric is thick, durable and premium. Truly satisfied.' },
+  { name: 'Tariq Mehmood', city: 'Sialkot', stars: 4, text: 'Selected the SUV size cover for Kia Sportage. Fitment is precise and water repellency performs brilliantly. Will definitely order again!' },
+];
+
+function renderTestimonials() {
+  const track = document.getElementById('testimonialsTrack');
+  if (!track) return;
+
+  // Duplicate for infinite scroll effect
+  const allCards = [...testimonialsData, ...testimonialsData];
+  track.innerHTML = allCards.map(t => {
+    const initials = t.name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
+    const stars = '★'.repeat(t.stars) + '☆'.repeat(5 - t.stars);
+    return `
+      <div class="testimonial-card">
+        <div class="testimonial-stars">${stars}</div>
+        <p class="testimonial-text">"${t.text}"</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">${initials}</div>
+          <div>
+            <div class="testimonial-name">${t.name}</div>
+            <div class="testimonial-city">📍 ${t.city}</div>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
 
 // ===== RENDER HOME PAGE BESTSELLERS =====
 function renderHomeProducts() {
@@ -415,6 +1141,19 @@ function renderHomeProducts() {
   if (grid) {
     const featured = productsData.slice(0, 8); // Top 8 featured products
     grid.innerHTML = featured.map(p => createProductCardHTML(p)).join('');
+    
+    // Animate product cards on load with instant snappiness
+    requestAnimationFrame(() => {
+      grid.querySelectorAll('.product-card').forEach((card, i) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(12px)';
+        setTimeout(() => {
+          card.style.transition = 'opacity 0.28s ease, transform 0.28s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, i * 35);
+      });
+    });
   }
 
   // Render Pakistan Car Directory if present
@@ -486,44 +1225,145 @@ function renderShopGrid() {
   grid.innerHTML = filtered.map(p => createProductCardHTML(p)).join('');
 }
 
-// ===== PRODUCT CARD HTML GENERATOR =====
+// ===== PRODUCT CARD HTML GENERATOR (ULTRA-ATTRACTIVE LUXURY EDITION) =====
+function switchCardColor(event, cardId, imgUrl) {
+  if (event) event.stopPropagation();
+  const card = document.querySelector(`.decent-card[data-id="${cardId}"]`);
+  if (!card) return;
+  const img = card.querySelector('.decent-img');
+  if (img && imgUrl) {
+    img.style.opacity = '0.35';
+    img.style.transform = 'scale(0.97)';
+    setTimeout(() => {
+      img.src = imgUrl;
+      img.style.opacity = '1';
+      img.style.transform = '';
+    }, 120);
+  }
+  const swatches = card.querySelectorAll('.swatch-dot');
+  swatches.forEach(s => s.classList.remove('active'));
+  if (event && event.currentTarget) {
+    event.currentTarget.classList.add('active');
+  }
+}
+
 function createProductCardHTML(p) {
-  const discount = Math.round((1 - p.price / p.old) * 100);
+  const discount = p.old && p.price ? Math.round((1 - p.price / p.old) * 100) : 0;
   const isWishlisted = wishlist.includes(p.id);
+  const vehicle = getVehicleName(p);
+  const ratingScore = p.rating ? p.rating.toFixed(1) : '4.9';
+
+  const isBike = p.cat === 'Bike Covers' || (p.body_style && p.body_style.toLowerCase() === 'motorcycle');
+  const isSUV = p.cat === 'SUV Covers' || (p.body_style && p.body_style.toLowerCase() === 'suv');
+  const blackImg = isBike ? 'images/covers/motorcycle_ripstop_pro.jpg' : (isSUV ? 'images/covers/fortuner_armor_suv.jpg' : 'images/covers/civic_velvet_bespoke.jpg');
+  const silverImg = isBike ? 'images/covers/motorcycle_ripstop_pro.jpg' : (isSUV ? 'images/covers/prado_landcruiser_armor.jpg' : 'images/covers/corolla_silver_shield.jpg');
+  const redImg = 'images/covers/hero_luxury_bespoke.jpg';
+
+  const chips = isBike 
+    ? `<div class="decent-chips">
+        <span class="decent-chip"><span class="chip-icon">💧</span>Rainproof</span>
+        <span class="decent-chip"><span class="chip-icon">🔥</span>Heat Guard</span>
+        <span class="decent-chip"><span class="chip-icon">🔒</span>Lock Ready</span>
+      </div>`
+    : (p.cat === 'Accessories'
+      ? `<div class="decent-chips">
+          <span class="decent-chip"><span class="chip-icon">🛡️</span>Anti-Theft</span>
+          <span class="decent-chip"><span class="chip-icon">⚡</span>Heavy Duty</span>
+          <span class="decent-chip"><span class="chip-icon">⭐</span>Original</span>
+        </div>`
+      : `<div class="decent-chips">
+          <span class="decent-chip"><span class="chip-icon">💧</span>Waterproof</span>
+          <span class="decent-chip"><span class="chip-icon">🛡️</span>Anti-Scratch</span>
+          <span class="decent-chip"><span class="chip-icon">☀️</span>UV Shield</span>
+        </div>`);
 
   return `
-    <article class="product-card">
-      ${discount > 0 ? `<span class="badge-discount">-${discount}% OFF</span>` : ''}
-      <button class="wishlist-btn ${isWishlisted ? 'active' : ''}" onclick="toggleWishlist(${p.id})">
-        ${isWishlisted ? '♥' : '♡'}
-      </button>
-      <div class="product-thumb" onclick="navigateToDetail(${p.id})" style="cursor:pointer;">
-        <img src="${p.image}" alt="${p.name}" loading="lazy">
-        <div class="quick-view-overlay">
-          <button class="btn btn-outline btn-sm" onclick="event.stopPropagation(); navigateToDetail(${p.id})">Full Details →</button>
-        </div>
+    <article class="decent-card" data-id="${p.id}">
+      <!-- Visual Showcase Stage -->
+      <div class="decent-thumb" onclick="navigateToDetail(${p.id})">
+        <!-- Floating Discount / Status Badge -->
+        ${discount > 0 ? `
+          <span class="decent-badge">
+            <span class="badge-spark">🔥</span>-${discount}%
+          </span>` : (p.badge ? `<span class="decent-badge">${p.badge}</span>` : '')}
+        
+        <!-- Wishlist Heart Trigger -->
+        <button class="decent-wishlist ${isWishlisted ? 'active' : ''}" 
+                onclick="event.stopPropagation(); toggleWishlist(${p.id})" 
+                title="${isWishlisted ? 'Remove from Wishlist' : 'Add to Wishlist'}"
+                aria-label="Wishlist">
+          <span>${isWishlisted ? '♥' : '♡'}</span>
+        </button>
+
+        <!-- Studio Light Beams & Pedestal -->
+        <div class="decent-spotlight"></div>
+        <div class="decent-pedestal"></div>
+        
+        <!-- Car Cover Dual Image: Main View + Hover Texture -->
+        <img class="decent-img decent-img-main" src="${p.image}" alt="${p.name}" loading="lazy" decoding="async">
+        <img class="decent-img decent-img-hover" src="${p.hoverImage || p.image}" alt="${p.name} Texture Detail" loading="lazy" decoding="async">
+        
+        <!-- Hover Hint Tag -->
+        <span class="decent-hover-pill">
+          <span class="pill-flip">🔄</span>
+          <span class="pill-lbl">Hover: Texture</span>
+        </span>
+
+        <!-- Floating Quick View Pill -->
+        <span class="decent-quickview">Quick View →</span>
       </div>
-      <div class="product-info">
-        <div class="product-cat-tag">${p.cat}</div>
-        <h3 class="product-title" onclick="navigateToDetail(${p.id})" style="cursor:pointer;">${p.name}</h3>
-        <div class="product-rating">
-          ★★★★★ <span>(${p.reviews} reviews)</span>
+
+      <!-- Clean Info Body -->
+      <div class="decent-body">
+        <!-- Vehicle Subtitle & Interactive Swatches -->
+        <div class="decent-sub-row">
+          <span class="decent-fit-badge">
+            <span class="fit-dot"></span>
+            <span>${vehicle !== 'Universal' ? `Fits ${vehicle}` : p.cat}</span>
+          </span>
+          <div class="decent-swatches" title="Switch finish preview">
+            <span class="swatch-dot swatch-black active" title="Stealth Black" onclick="switchCardColor(event, ${p.id}, '${blackImg}')"></span>
+            <span class="swatch-dot swatch-silver" title="Silver Heat Deflector" onclick="switchCardColor(event, ${p.id}, '${silverImg}')"></span>
+            <span class="swatch-dot swatch-red" title="Crimson Sport" onclick="switchCardColor(event, ${p.id}, '${redImg}')"></span>
+          </div>
         </div>
-        <div class="product-price-row">
-          <span class="current-price">${formatMoney(p.price)}</span>
-          <span class="old-price">${formatMoney(p.old)}</span>
+        
+        <!-- Title -->
+        <h3 class="decent-title" onclick="navigateToDetail(${p.id})" title="${p.name}">
+          ${p.name}
+        </h3>
+
+        <!-- Sleek Feature Micro-Chips (Zero Wall of Text) -->
+        ${chips}
+
+        <!-- Price & Trust Rating Row -->
+        <div class="decent-meta">
+          <div class="decent-price-group">
+            <span class="decent-price">${formatMoney(p.price)}</span>
+            ${p.old ? `<span class="decent-old">${formatMoney(p.old)}</span>` : ''}
+          </div>
+          <div class="decent-rating-box">
+            <span class="rating-pill">★ ${ratingScore}</span>
+          </div>
         </div>
-        <div style="display:flex; gap:8px; margin-top: auto;">
-          <button class="add-cart-btn" style="flex:1;" onclick="addToCart(${p.id})">
-            🛒 Add to Cart
+
+        <!-- Action Row -->
+        <div class="decent-actions">
+          <button class="decent-btn-cart" onclick="addToCart(${p.id})">
+            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+            <span>Add to Cart</span>
           </button>
-          <button class="btn btn-whatsapp" style="padding:10px 14px;" onclick="orderViaWhatsApp(${p.id})" title="Order via WhatsApp">
-            💬
+          <button class="decent-btn-wa" onclick="orderViaWhatsApp(${p.id})" title="Order directly on WhatsApp" aria-label="Order on WhatsApp">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19.01L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 14.99 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67Z"/></svg>
           </button>
         </div>
       </div>
     </article>
   `;
+}
+
+function getVehicleName(item) {
+  return [item.fitMake, item.fitModel].filter(Boolean).join(' ') || 'Universal';
 }
 
 // ===== PRODUCT DETAILS PAGE BINDER =====
@@ -538,6 +1378,7 @@ function initProductDetailPage() {
   const imgEl = document.getElementById('detailImage');
   const titleEl = document.getElementById('detailTitle');
   const catEl = document.getElementById('detailCat');
+  const fitEl = document.getElementById('detailFit');
   const priceEl = document.getElementById('detailPrice');
   const oldPriceEl = document.getElementById('detailOldPrice');
   const descEl = document.getElementById('detailDesc');
@@ -550,6 +1391,7 @@ function initProductDetailPage() {
   if (imgEl) imgEl.src = p.image;
   if (titleEl) titleEl.textContent = p.name;
   if (catEl) catEl.textContent = p.cat;
+  if (fitEl) fitEl.textContent = `Fits: ${getVehicleName(p)}`;
   if (priceEl) priceEl.textContent = formatMoney(p.price);
   if (oldPriceEl) oldPriceEl.textContent = formatMoney(p.old);
   if (descEl) descEl.textContent = p.shortDesc;
@@ -823,6 +1665,8 @@ function renderCart() {
         <img src="${item.image}" alt="${item.name}" style="width: 60px; height: 60px; object-fit: cover; border-radius: 8px;">
         <div style="flex:1;">
           <div class="cart-item-title">${item.name}</div>
+          ${item.fabric ? `<div class="cart-item-fabric" style="font-size:0.76rem; color:#38bdf8; font-weight:700; margin-top:1px;">🧵 Fabric: ${item.fabric}</div>` : ''}
+          <div class="cart-item-fit">Fits: ${getVehicleName(item)}</div>
           <div class="cart-item-price">${formatMoney(item.price)}</div>
           <div style="display:flex; align-items:center; gap:8px; margin-top:8px;">
             <button onclick="updateCartQty(${item.id}, -1)" style="background:var(--dark-bg); color:#fff; width:24px; height:24px; border-radius:4px; border:1px solid var(--border);">-</button>
@@ -879,6 +1723,8 @@ function initCartPage() {
               <img src="${item.image}" alt="${item.name}" style="width: 70px; height: 70px; object-fit: cover; border-radius: 8px;">
               <div>
                 <strong>${item.name}</strong>
+                ${item.fabric ? `<div style="font-size:0.8rem; color:#38bdf8; font-weight:700; margin-top:2px;">🧵 Fabric: ${item.fabric}</div>` : ''}
+                <div class="cart-item-fit">Fits: ${getVehicleName(item)}</div>
                 <div style="font-size:0.8rem; color:var(--text-muted);">${item.cat}</div>
               </div>
             </td>
@@ -939,18 +1785,28 @@ function updateBadges() {
 
   const totalCartCount = cart.reduce((sum, item) => sum + item.qty, 0);
 
-  if (cartBadge) cartBadge.textContent = totalCartCount;
+  if (cartBadge) {
+    cartBadge.textContent = totalCartCount;
+    cartBadge.classList.add('bump');
+    setTimeout(() => cartBadge.classList.remove('bump'), 350);
+  }
   if (wishBadge) wishBadge.textContent = wishlist.length;
 }
 
 function openCartDrawer() {
   const drawer = document.getElementById('cartDrawer');
+  const backdrop = document.getElementById('cartBackdrop');
   if (drawer) drawer.classList.add('open');
+  if (backdrop) backdrop.classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 
 function closeCartDrawer() {
   const drawer = document.getElementById('cartDrawer');
+  const backdrop = document.getElementById('cartBackdrop');
   if (drawer) drawer.classList.remove('open');
+  if (backdrop) backdrop.classList.remove('open');
+  document.body.style.overflow = '';
 }
 
 // ===== WHATSAPP ORDER & CONFIRMATION SYSTEM =====
@@ -1052,7 +1908,11 @@ function showOrderConfirmationModal(orderData) {
         <div class="order-items-list">
           ${orderData.items.map(item => `
             <div class="order-item-entry">
-              <span>${item.name} <strong style="color:var(--text-secondary);">× ${item.qty}</strong></span>
+              <span>
+                <strong>${item.name}</strong>
+                <span class="order-item-fit">Fits: ${getVehicleName(item)}</span>
+                <strong style="color:var(--text-secondary);">× ${item.qty}</strong>
+              </span>
               <span style="color:var(--red); font-weight:700;">${formatMoney(item.price * item.qty)}</span>
             </div>
           `).join('')}
@@ -1162,7 +2022,9 @@ function orderViaWhatsApp(productId) {
 
   msg += `📦 *ORDERED ITEMS:*\n`;
   itemsToOrder.forEach((it, idx) => {
-    msg += `${idx + 1}. *${it.name}*\n   Qty: ${it.qty} × ${formatMoney(it.price)} = ${formatMoney(it.price * it.qty)}\n`;
+    msg += `${idx + 1}. *${it.name}*\n`;
+    if (it.fabric) msg += `   🧵 Fabric Material: *${it.fabric}*\n`;
+    msg += `   Fits: ${getVehicleName(it)}\n   Qty: ${it.qty} × ${formatMoney(it.price)} = ${formatMoney(it.price * it.qty)}\n`;
   });
   msg += `━━━━━━━━━━━━━━━━━━━━━\n`;
   msg += `💰 *Grand Total:* ${formatMoney(total)}\n`;
@@ -1220,7 +2082,9 @@ function handleCheckoutSubmit(e) {
   }
   storeMsg += `\n📦 *ORDER ITEMS:*\n`;
   orderedItems.forEach((item, index) => {
-    storeMsg += `${index + 1}. *${item.name}*\n   Qty: ${item.qty} × ${formatMoney(item.price)} = ${formatMoney(item.price * item.qty)}\n`;
+    storeMsg += `${index + 1}. *${item.name}*\n`;
+    if (item.fabric) storeMsg += `   🧵 Fabric Material: *${item.fabric}*\n`;
+    storeMsg += `   Fits: ${getVehicleName(item)}\n   Qty: ${item.qty} × ${formatMoney(item.price)} = ${formatMoney(item.price * item.qty)}\n`;
   });
   storeMsg += `━━━━━━━━━━━━━━━━━━━━━\n`;
   storeMsg += `💰 *Grand Total:* ${formatMoney(total)}\n`;
@@ -1231,18 +2095,18 @@ function handleCheckoutSubmit(e) {
   // 2. Customer Order Confirmation Message
   let customerMsg = `✅ *ORDER CONFIRMED — AUTOSHIELD CAR COVERS*\n`;
   customerMsg += `━━━━━━━━━━━━━━━━━━━━━\n`;
-  customerMsg += `Assalam-o-Alaikum *${name}*,\n\n`;
-  customerMsg += `Shukriya! Aap ka AutoShield order kamyabi se confirm ho gaya hai.\n\n`;
+  customerMsg += `Dear *${name}*,\n\n`;
+  customerMsg += `Thank you! Your AutoShield order has been successfully confirmed.\n\n`;
   customerMsg += `📋 *Order ID:* #${orderId}\n`;
   customerMsg += `📅 *Order Date:* ${orderDate}\n\n`;
   customerMsg += `📦 *ORDERED ITEMS:*\n`;
   orderedItems.forEach((item, index) => {
-    customerMsg += `${index + 1}. ${item.name} (${item.qty}x) - ${formatMoney(item.price * item.qty)}\n`;
+    customerMsg += `${index + 1}. ${item.name} ${item.fabric ? `[Fabric: ${item.fabric}]` : ''} — Fits: ${getVehicleName(item)} (${item.qty}x) - ${formatMoney(item.price * item.qty)}\n`;
   });
   customerMsg += `\n💰 *Total Amount:* ${formatMoney(total)} (${payment})\n`;
   customerMsg += `📍 *Delivery Address:* ${address}, ${city}\n\n`;
-  customerMsg += `🚚 *Delivery Status:* 2 se 4 working days mein parcel apke address par deliver ho jayega. Delivery rider dispatch se pehle apko rabta karega.\n\n`;
-  customerMsg += `Koi bhi sawal ho to hum se WhatsApp par rabta karein: +92 328 5154975\n`;
+  customerMsg += `🚚 *Delivery Status:* Your parcel will be delivered to your address within 2 to 4 working days. The delivery rider will contact you prior to dispatch.\n\n`;
+  customerMsg += `If you have any questions, feel free to contact us on WhatsApp: +92 307 2818652\n`;
   customerMsg += `AutoShield Pakistan 🛡️`;
 
   const orderData = {
@@ -1262,9 +2126,9 @@ function handleCheckoutSubmit(e) {
     localStorage.setItem('autoshield_orders', JSON.stringify(ordersHistory));
   } catch (err) {}
 
-  // Attempt async save to API backend if available
+  // Attempt async save to MySQL API backend
   try {
-    fetch('api.php/orders', {
+    fetch(`${BASE_URL}?action=create_order`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -1278,6 +2142,8 @@ function handleCheckoutSubmit(e) {
         items: orderedItems,
         notes: notes
       })
+    }).then(res => res.json()).then(resData => {
+      console.log('Order successfully synced to MySQL database:', resData);
     }).catch(() => {});
   } catch (err) {}
 

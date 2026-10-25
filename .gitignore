@@ -1,0 +1,12 @@
+/autoshield_laravel/vendor/
+/autoshield_laravel/node_modules/
+/autoshield_laravel/.env
+/autoshield_laravel/storage/framework/cache/*
+/autoshield_laravel/storage/framework/sessions/*
+/autoshield_laravel/storage/framework/views/*
+/autoshield_laravel/storage/logs/*
+export_static.php
+original_index.html
+archive/
+.DS_Store
+Thumbs.db

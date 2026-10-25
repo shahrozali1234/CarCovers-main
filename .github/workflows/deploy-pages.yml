@@ -29,9 +29,9 @@ jobs:
 
       - name: Prepare static website
         run: |
-          mkdir -p _site/images
-          cp index.html about.html shop.html categories.html contact.html cart.html product-detail.html styles.css script.js autoshield-logo.png _site/
-          cp images/*.png _site/images/
+          mkdir -p _site
+          cp -r *.html *.css *.js autoshield-logo.png favicon.ico images css js _site/ 2>/dev/null || true
+          touch _site/.nojekyll
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

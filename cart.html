@@ -3,203 +3,645 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shopping Cart & Checkout — AutoShield Car Top Covers</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
+    <title>Shopping Cart &amp; Checkout — AutoShield Car Top Covers</title>
+    <meta name="description" content="Shop 100% waterproof, UV reflective, custom-fit car top covers in Pakistan. Cash on delivery nationwide.">
+    <meta name="csrf-token" content="HBYyLyb0dNuvsGxMf8Ms1WQdOaM5XBogvUeFtJSp">
+
+    <!-- Google Fonts (Velox Luxury Typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Original Stylesheet -->
+    <link rel="stylesheet" href="index.htmlcss/styles.css?v=1792924381">
+    <!-- Professional Enhancements -->
+    <link rel="stylesheet" href="index.htmlcss/enhancements.css?v=1792924381">
+    <link rel="icon" type="image/png" href="index.htmlautoshield-logo.png">
+
+    </head>
 <body>
 
-    <!-- Top Bar -->
+    <!-- Flash Notifications -->
+    
+    
+    
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover."
+       class="whatsapp-float" target="_blank" rel="noopener" title="Order on WhatsApp" id="waFloat">
+        <span class="whatsapp-float-pulse"></span>
+        💬
+    </a>
+
+    <!-- Top Announcement Bar -->
     <div class="topbar">
         <div class="topbar-content">
-            <span class="topbar-badge">SECURE CHECKOUT</span>
-            <span>⚡ FREE DELIVERY ON SELECTED ORDERS OVER RS. 5,000 • CASH ON DELIVERY NATIONWIDE</span>
-            <span>📞 WHATSAPP ORDER: +92 328 5154975</span>
+            <span class="topbar-badge">SPECIAL OFFER</span>
+            <span>⚡ FREE DELIVERY ON ORDERS OVER RS. 5,000 &nbsp;•&nbsp; CASH ON DELIVERY NATIONWIDE &nbsp;•&nbsp; 1-YEAR WARRANTY INCLUDED</span>
+            <span>📞 +92 307 2818652</span>
         </div>
     </div>
 
-    <!-- Header Navigation -->
+    <!-- Sticky Navigation Header -->
     <header class="header">
         <div class="container nav">
-            <a href="index.html" class="logo">
-                <img src="autoshield-logo.png" alt="AutoShield Logo">
+            <!-- Elegant Gold Brand Logo -->
+            <a href="index.html" class="brand-logo" aria-label="AutoShield Bespoke Vehicle Covers">
+                <div class="logo-crest">
+                    <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                        <path d="M20 7L31 12V20C31 27.5 26 33.2 20 35.8C14 33.2 9 27.5 9 20V12L20 7Z" stroke="#D0AC59" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
+                        <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                        <circle cx="20" cy="18" r="1.5" fill="#E9E5DF" />
+                    </svg>
+                </div>
+                <div class="logo-typography">
+                    <span class="logo-main">AUTOSHIELD</span>
+                    <span class="logo-sub">BESPOKE CAR COVERS</span>
+                </div>
             </a>
 
-            <ul class="nav-links" id="mobileNav">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="shop.html">Shop Catalogue</a></li>
-                <li><a href="categories.html">Categories</a></li>
-                <li><a href="about.html">About & Tech</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-            </ul>
+            <!-- Desktop Navigation Links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="index.html" class="">Home</a>
+                </li>
+                
+                <!-- The Collection Dropdown -->
+                <li class="nav-item-dropdown">
+                    <a href="shop.html" class="">
+                        The Collection <span class="nav-arrow">▾</span>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="shop.html#sedan" class="dropdown-link">
+                                <span class="dropdown-link-title">Indoor Velvet Coupe & Sedan</span>
+                                <span class="dropdown-link-desc">Ultra-soft cotton velvet lining, zero swirl marks, dustproof</span>
+                            </a>
+                            <a href="shop.html#suv" class="dropdown-link">
+                                <span class="dropdown-link-title">SUV & 4x4 Heavy Armor</span>
+                                <span class="dropdown-link-desc">Reinforced 5-layer outdoor barrier with storm wind-buckles</span>
+                            </a>
+                            <a href="shop.html#sedan" class="dropdown-link">
+                                <span class="dropdown-link-title">All-Weather Outdoor Deflector</span>
+                                <span class="dropdown-link-desc">100% Monsoon waterproof and 99.5% Solar UV heat deflection</span>
+                            </a>
+                            <a href="shop.html#bike" class="dropdown-link">
+                                <span class="dropdown-link-title">Motorcycle Armor Shield</span>
+                                <span class="dropdown-link-desc">Heat-resistant exhaust panels and snug elastic fit</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="shop.html" class="dropdown-link-all">
+                                <span>View Complete Catalogue</span>
+                                <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
 
+                <li>
+                    <a href="shop.html" class="">Shop</a>
+                </li>
+
+                <li>
+                    <a href="contact.html" class="">Contact Us</a>
+                </li>
+
+                                    <li><a href="shop.html" class="">Login</a></li>
+                            </ul>
+
+            <!-- Minimal Actions: Search, Wishlist, Cart Drawer, Mobile Toggle -->
             <div class="header-actions">
-                <button class="icon-btn" onclick="openCartDrawer()" title="Shopping Cart">
-                    🛒<span class="badge" id="cartCount">0</span>
+                <!-- Search Icon Button -->
+                <button type="button" class="nav-icon-btn" id="headerSearchToggle" title="Search Covers" aria-label="Open search dialog">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
                 </button>
-                <button class="mobile-menu-btn" aria-label="Toggle navigation" onclick="document.getElementById('mobileNav').classList.toggle('open')">☰</button>
+
+                <!-- Liked / Wishlist Icon Button -->
+                <button type="button" class="nav-icon-btn wishlist-nav-btn" id="wishlistHeaderBtn" title="Saved Covers" aria-label="Saved Covers">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                    </svg>
+                    <span class="badge" id="wishlistCount" style="display:none;">0</span>
+                </button>
+
+                <!-- Shopping Cart Icon Button with Counter Badge -->
+                                <button type="button" class="nav-icon-btn" id="headerCartBtn" data-cart-trigger title="Shopping Cart" aria-label="Open shopping cart drawer">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="badge" id="cartCount">0</span>
+                </button>
+
+                <!-- Responsive Mobile Menu Toggle Button -->
+                <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle navigation menu">
+                    <span>☰</span>
+                </button>
             </div>
         </div>
     </header>
 
-    <!-- Page Banner -->
-    <section class="page-banner">
-        <div class="container">
-            <div class="eyebrow">Your Items</div>
-            <h1>SHOPPING CART & <span class="text-gradient">CHECKOUT</span></h1>
-            <p>Review your selected protective covers and fill out shipping details for Cash on Delivery shipment.</p>
+    <!-- Main Page Content -->
+    <main>
+        <!-- Page Banner -->
+<section class="page-banner">
+    <div class="container">
+        <div class="eyebrow">Your Items</div>
+        <h1>SHOPPING CART & <span class="text-gradient">CHECKOUT</span></h1>
+        <p>Review your selected protective covers and fill out shipping details for Cash on Delivery shipment.</p>
+    </div>
+</section>
+
+<!-- Cart Items & Order Form Layout -->
+<section class="specs-section">
+    <div class="container">
+
+        <!-- Breadcrumb -->
+        <div class="breadcrumb" style="margin-bottom: 28px;">
+            <a href="index.html">Home</a>
+            <span class="breadcrumb-sep">/</span>
+            <a href="shop.html">Shop</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-current">Cart & Checkout</span>
         </div>
-    </section>
 
-    <!-- Cart Items & Order Form Layout -->
-    <section class="specs-section">
-        <div class="container" style="display:grid; grid-template-columns: 1.2fr 0.8fr; gap:40px;">
-            
-            <!-- Cart Items Table Container -->
-            <div>
-                <h2 style="margin-bottom:20px;">Cart Summary</h2>
-                <div id="cartPageItems"></div>
+        <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:40px; align-items: start;">
+        
+        <!-- Cart Items Table Container -->
+        <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2>Cart Summary</h2>
+                <a href="shop.html" class="btn btn-outline btn-sm">+ Add More Items</a>
             </div>
 
-            <!-- Shipping & Checkout Address Form -->
-            <div style="background:var(--card-bg); padding:32px; border-radius:var(--radius-lg); border:1px solid var(--border); height:fit-content;">
-                <h3 style="margin-bottom:8px;">Shipping Address Form</h3>
-                <p style="color:var(--text-secondary); font-size:0.85rem; margin-bottom:20px;">Cash on Delivery delivery across Pakistan.</p>
-
-                <form onsubmit="handleCheckoutSubmit(event)">
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Full Name *</label>
-                        <input type="text" id="custName" required placeholder="Enter full name" style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);">
+                            <div style="background: var(--card-bg); border: 1px dashed var(--border); border-radius: var(--radius-lg); padding: 50px 20px; text-align: center;">
+                    <div style="font-size: 3rem; margin-bottom: 12px;">🛒</div>
+                    <h3 style="font-size: 1.25rem; color: #fff; margin-bottom: 8px;">Your Shopping Cart Is Empty</h3>
+                    <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+                        Explore our high-performance car, SUV, and motorcycle covers.
+                    </p>
+                    <a href="shop.html" class="btn btn-primary btn-sm">Explore All Covers →</a>
+                </div>
                     </div>
 
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Mobile Phone / WhatsApp *</label>
-                        <input type="tel" id="custPhone" required placeholder="0300 1234567" style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);">
-                    </div>
+        <!-- Shipping & Checkout Address Form -->
+        <div style="background:var(--bg-card); padding:32px; border-radius:var(--radius-lg); border:1px solid var(--border-color); height:fit-content;">
+            <h3 style="font-family: var(--font-serif); font-size: 1.6rem; color: var(--text-primary); margin-bottom:8px; font-weight: 400;">Shipping Address</h3>
+            <p style="color:var(--text-muted); font-size:0.85rem; margin-bottom:24px;">Cash on Delivery nationwide across 150+ cities in Pakistan.</p>
 
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Delivery City *</label>
-                        <input type="text" id="custCity" required placeholder="e.g. Lahore, Karachi, Islamabad" style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);">
-                    </div>
+            <form action="cart.html/order" method="POST">
+                <input type="hidden" name="_token" value="HBYyLyb0dNuvsGxMf8Ms1WQdOaM5XBogvUeFtJSp" autocomplete="off">                <div class="form-group-pro">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"/></svg>
+                        Full Name *
+                    </label>
+                    <input type="text" name="customer_name" required placeholder="e.g. Muhammad Ali" value="" class="input-professional">
+                </div>
 
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Complete Shipping Address *</label>
-                        <textarea id="custAddress" required rows="3" placeholder="House #, Street #, Sector/Area..." style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);"></textarea>
-                    </div>
+                <div class="form-group-pro">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"/></svg>
+                        Mobile Phone / WhatsApp *
+                    </label>
+                    <input type="tel" name="phone" required placeholder="0300 1234567" value="" class="input-professional">
+                </div>
 
-                    <div style="margin-bottom:16px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Payment Method</label>
-                        <select id="custPayment" style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);">
-                            <option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option>
-                            <option value="Bank Transfer / JazzCash / EasyPaisa">Bank Transfer / JazzCash / EasyPaisa</option>
-                        </select>
-                    </div>
+                <div class="form-group-pro">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                        Delivery City *
+                    </label>
+                    <input type="text" name="city" required placeholder="e.g. Lahore, Karachi, Islamabad" value="" class="input-professional">
+                </div>
 
-                    <div style="margin-bottom:24px;">
-                        <label style="display:block; font-weight:700; margin-bottom:6px; font-size:0.85rem;">Car Model / Special Notes (Optional)</label>
-                        <input type="text" id="custNotes" placeholder="e.g. Honda Civic 2022, call before delivery" style="width:100%; padding:12px; background:var(--dark-bg); color:#fff; border:1px solid var(--border); border-radius:var(--radius-md);">
-                    </div>
+                <div class="form-group-pro">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
+                        Complete Shipping Address *
+                    </label>
+                    <textarea name="address" required rows="3" placeholder="House #, Street #, Sector/Area..." class="input-professional" style="resize:vertical;"></textarea>
+                </div>
 
-                    <div style="border-top:1px solid var(--border); padding-top:16px; margin-bottom:20px;">
-                        <div style="display:flex; justify-content:space-between; font-size:1.2rem; font-weight:900;">
-                            <span>Grand Total:</span>
-                            <span id="cartPageGrandTotal" style="color:var(--red);">Rs. 0</span>
-                        </div>
-                    </div>
+                <div class="form-group-pro">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
+                        Payment Method
+                    </label>
+                    <select name="payment_method" class="input-professional">
+                        <option value="cod">Cash on Delivery (COD) — Pay when courier arrives</option>
+                        <option value="bank">Bank Transfer / JazzCash / EasyPaisa</option>
+                    </select>
+                </div>
 
-                    <button type="submit" class="btn btn-primary btn-full">CONFIRM & PLACE ORDER 📦</button>
-                    <button type="button" class="btn btn-whatsapp btn-full" style="margin-top:10px;" onclick="orderViaWhatsApp()">💬 ORDER VIA WHATSAPP</button>
-                </form>
-            </div>
+                <div class="form-group-pro" style="margin-bottom:28px;">
+                    <label class="form-label-pro">
+                        <svg viewBox="0 0 20 20" width="13" fill="currentColor" style="color:var(--gold-accent)"><path d="M8 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM15 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM3 4h14l-1.68 7.39a2 2 0 01-1.95 1.61H6.63a2 2 0 01-1.95-1.61L3 4z"/></svg>
+                        Car Model / Special Notes (Optional)
+                    </label>
+                    <input type="text" name="notes" placeholder="e.g. Honda Civic 2022, call before delivery" value="" class="input-professional">
+                </div>
 
-        </div>
-    </section>
-
-    <!-- Order Confirmation Modal -->
-    <div class="modal-backdrop" id="orderConfirmModal">
-        <div class="order-modal">
-            <div class="order-modal-header">
-                <div class="order-success-icon">✓</div>
-                <h2 style="font-size:1.6rem; margin-bottom:4px;">Order Confirmed! 🎉</h2>
-                <p style="color:var(--text-secondary); font-size:0.9rem;">Thank you! Your AutoShield order has been received.</p>
-                <div class="order-id-badge" id="modalOrderNumber">#AS-000000</div>
-            </div>
-
-            <div class="order-receipt-card" id="modalReceiptContent">
-                <!-- Dynamically populated by script.js -->
-            </div>
-
-            <div class="order-actions-stack">
-                <a href="#" id="modalStoreWaBtn" target="_blank" class="btn btn-whatsapp btn-full" style="text-decoration:none; display:flex; align-items:center; justify-content:center; gap:8px;">
-                    💬 Open WhatsApp to Send Order to Store
-                </a>
-                <a href="#" id="modalCustomerWaBtn" target="_blank" class="btn btn-secondary-action btn-full" style="text-decoration:none;">
-                    📲 Send Confirmation to Customer WhatsApp
-                </a>
-                <button type="button" class="btn-secondary-action btn-full" onclick="copyOrderSummary()">
-                    📋 Copy Order Details to Clipboard
+                <button type="submit" class="btn btn-primary btn-full" style="padding: 16px; font-size: 0.95rem; width: 100%;">
+                    CONFIRM CASH ON DELIVERY ORDER →
                 </button>
-                <button type="button" class="btn btn-outline btn-full" onclick="closeOrderModal()" style="margin-top:4px;">
-                    Continue Shopping
-                </button>
-            </div>
-
-            <p class="whatsapp-notice">
-                🔒 An automated text summary has been generated for WhatsApp. You can review and send it anytime.
-            </p>
+            </form>
         </div>
     </div>
+    </div>
+</section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
         <div class="container footer-grid">
             <div class="footer-brand">
-                <img src="autoshield-logo.png" alt="AutoShield" style="height: 54px;">
-                <p>AutoShield Car Top Covers — Pakistan's premier online brand for high quality custom-fit vehicle protective covers.</p>
+                <a href="index.html" class="brand-logo" style="margin-bottom: 18px; display:inline-flex;">
+                    <div class="logo-crest">
+                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                            <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                        </svg>
+                    </div>
+                    <div class="logo-typography">
+                        <span class="logo-main" style="font-size: 1.3rem;">AUTOSHIELD</span>
+                        <span class="logo-sub" style="font-size: 0.52rem;">BESPOKE CAR COVERS</span>
+                    </div>
+                </a>
+                <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px;">
+                    Premier tailor-crafted vehicle protective covers, extreme weather SUV armor, and indoor velvet dust shields in Pakistan. Guaranteed custom fit with nationwide Cash on Delivery.
+                </p>
+                <div>
+                    <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover." target="_blank" class="btn btn-whatsapp btn-sm">
+                        💬 WHATSAPP: +92 307 2818652 →
+                    </a>
+                </div>
             </div>
+
             <div class="footer-col">
-                <h4>Explore</h4>
+                <h4>The Collection</h4>
                 <ul class="footer-links">
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="shop.html">Shop Catalogue</a></li>
-                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="shop.html#sedan">Indoor Velvet Coupe & Sedan</a></li>
+                    <li><a href="shop.html#suv">SUV & 4x4 Heavy Shield</a></li>
+                    <li><a href="shop.html#sedan">All-Weather Outdoor Armor</a></li>
+                    <li><a href="shop.html#bike">Motorcycle Body Shield</a></li>
+                    <li><a href="shop.html">Complete Catalogue</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
-                <h4>Support</h4>
+                <h4>Customer Care</h4>
                 <ul class="footer-links">
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="#" onclick="orderViaWhatsApp(); return false;">WhatsApp Support</a></li>
+                    <li><a href="cart.html">Shopping Cart Drawer</a></li>
+                    <li><a href="about.html">5-Layer Composite Specs</a></li>
+                    <li><a href="contact.html">Fitment Guarantee & Exchange</a></li>
+                    <li><a href="contact.html">FAQ & Nationwide Shipping</a></li>
                 </ul>
             </div>
+
             <div class="footer-col">
-                <h4>Contact</h4>
-                <p>📍 Gulberg III, Lahore, Pakistan<br>📞 +92 328 5154975</p>
+                <h4>Atelier & Contact</h4>
+                <div style="font-size: 0.88rem; line-height: 1.8; color: var(--text-muted);">
+                    <p>📍 AutoShield HQ, Gulberg III, Lahore</p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923072818652" target="_blank" style="color:var(--gold-accent); text-decoration:none; font-weight:600;">+92 307 2818652</a></p>
+                    <p>📞 Phone: <a href="tel:03072818652" style="color:inherit; text-decoration:none;">0307-2818652</a></p>
+                    <p>✉ Email: support@autoshield.pk</p>
+                    <p>🕒 Mon - Sat (9:00 AM - 9:00 PM)</p>
+                </div>
             </div>
+        </div>
+
+        <div class="container" style="border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.82rem; letter-spacing: 0.5px;">
+            © 2026 AutoShield Bespoke Car Covers. All Rights Reserved. • Guaranteed Exact Fitment Nationwide
         </div>
     </footer>
 
-    <!-- Cart Drawer -->
-    <aside class="cart-drawer" id="cartDrawer">
-        <div class="cart-header">
-            <h3>Your Cart 🛒</h3>
-            <button class="icon-btn" onclick="closeCartDrawer()">✕</button>
+    <!-- Slide-Out Cart Drawer Component -->
+    <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+        <div class="cart-drawer-header">
+            <h3>🛒 Your Cover Cart (<span class="cart-count-badge">0</span>)</h3>
+            <button type="button" class="drawer-close-btn" id="cartDrawerClose" title="Close Cart">&times;</button>
         </div>
-        <div class="cart-body" id="cartItems"></div>
-        <div class="cart-footer">
-            <div class="cart-subtotal">
-                <span>Total Amount:</span>
-                <span id="cartSubtotal" style="color: var(--red);">Rs. 0</span>
+
+        <div class="free-shipping-progress">
+                        <div class="shipping-bar-text" id="shippingBarText">
+                                    🚚 Add <strong>Rs. 5,000</strong> more to unlock <strong>FREE Delivery!</strong>
+                            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
             </div>
-            <a href="cart.html" class="btn btn-primary btn-full">PROCEED TO CHECKOUT →</a>
+        </div>
+
+        <div class="cart-drawer-body" id="drawerCartList">
+            <!-- Dynamically populated via autoshield-core.js -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="drawer-subtotal-row">
+                <span>Subtotal:</span>
+                <span class="drawer-subtotal-price" id="drawerSubtotal">Rs. 0</span>
+            </div>
+            <p class="drawer-cod-note">✅ Cash on Delivery (COD) available in all 150+ cities across Pakistan.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <a href="cart.html" class="btn btn-primary" style="width:100%; text-align:center; padding:14px;">
+                    PROCEED TO CHECKOUT →
+                </a>
+                <a href="#" id="drawerWaCheckout" class="btn btn-whatsapp" target="_blank" style="width:100%; text-align:center; padding:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    💬 Order Cart via WhatsApp
+                </a>
+            </div>
         </div>
     </aside>
 
-    <div class="toast-container" id="toastContainer"></div>
-    <script src="script.js"></script>
+    <!-- Slide-Out Wishlist Drawer Component -->
+    <div class="wishlist-drawer-overlay" id="wishlistDrawerOverlay"></div>
+    <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Saved Covers Wishlist">
+        <div class="wishlist-drawer-header">
+            <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--red)" stroke="var(--red)" stroke-width="2" style="display:inline-block; vertical-align:middle;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+                Liked Covers (<span id="wishlistDrawerCount">0</span>)
+            </h3>
+            <button type="button" class="drawer-close-btn" id="wishlistDrawerClose" title="Close Wishlist">&times;</button>
+        </div>
+
+        <div class="wishlist-drawer-body" id="wishlistDrawerBody">
+            <!-- Dynamically populated via autoshield-core.js -->
+        </div>
+
+        <div class="wishlist-drawer-footer">
+            <a href="shop.html" class="btn btn-primary" style="width:100%; text-align:center; padding:13px;" onclick="closeWishlistDrawer()">
+                Browse All Vehicle Covers →
+            </a>
+        </div>
+    </aside>
+
+    <!-- Global Toast for Wishlist & Actions -->
+    <div class="wishlist-toast" id="wishlistToast">
+        <span id="wishlistToastIcon">❤️</span>
+        <span id="wishlistToastMsg">Added to your liked covers</span>
+    </div>
+
+    <!-- Global Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close-btn" id="quickViewClose" title="Close">&times;</button>
+            <div class="quickview-grid">
+                <div class="quickview-img">
+                    <img id="qvImage" src="index.htmlimages/covers/civic_velvet_bespoke.jpg" alt="Product Image">
+                </div>
+                <div>
+                    <div class="eyebrow" id="qvCategory">Car Covers • All-Weather</div>
+                    <h2 id="qvTitle" style="font-size: 1.5rem; margin: 8px 0 12px; color: #fff;">Premium Cover</h2>
+                    
+                    <div class="product-price-row" style="margin-bottom: 16px;">
+                        <span class="current-price" id="qvPrice" style="font-size: 1.6rem; color: var(--gold-accent);">Rs. 6,999</span>
+                        <span class="old-price" id="qvOldPrice" style="font-size: 1rem;">Rs. 8,999</span>
+                    </div>
+
+                    <p id="qvDesc" style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 20px;">
+                        Heavy duty all-weather vehicle cover.
+                    </p>
+
+                    <form action="cart.html/add" method="POST" id="qvForm">
+                        <input type="hidden" name="_token" value="HBYyLyb0dNuvsGxMf8Ms1WQdOaM5XBogvUeFtJSp" autocomplete="off">                        <input type="hidden" name="product_id" id="qvProductId" value="1">
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:6px; color:var(--text-secondary);">Select Vehicle Size:</label>
+                            <select name="size" style="width: 100%; padding: 10px 14px; background: #090B10; border: 1px solid var(--border); border-radius: var(--radius-md); color:#fff; font-size:0.88rem;">
+                                <option value="Standard Fit">Standard Fit (Guaranteed)</option>
+                                <option value="Custom Size Fitment">Custom Vehicle Fitment</option>
+                                <option value="Oversized XL">Oversized Extra Large</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; gap:10px; margin-bottom: 14px;">
+                            <button type="submit" class="btn btn-primary" style="flex:1; padding:12px;">
+                                🛒 Add to Cart
+                            </button>
+                            <a href="#" id="qvWaBtn" target="_blank" class="btn btn-whatsapp" style="padding:12px 16px;" title="Order via WhatsApp">
+                                💬
+                            </a>
+                        </div>
+                    </form>
+
+                    <a href="#" id="qvDetailLink" style="font-size:0.85rem; color:var(--text-muted); text-decoration:underline;">
+                        View Full Technical Specifications & Warranty Details →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Direct WhatsApp Order Modal -->
+    <div class="modal-overlay" id="waOrderModal">
+        <div class="modal-card" style="max-width: 520px;">
+            <button type="button" class="modal-close-btn" id="waOrderClose" title="Close">&times;</button>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">💬</div>
+                <h3 style="font-size: 1.3rem; color: #fff;">Fast WhatsApp Order</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">No forms or sign-ups required. Send your vehicle details directly to our WhatsApp support team!</p>
+            </div>
+
+            <form id="waOrderForm">
+                <div class="wa-order-field">
+                    <label>🚗 Your Vehicle Make & Model *</label>
+                    <input type="text" id="waVehicleModel" placeholder="e.g. Honda Civic 2022 or Suzuki Alto" required>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>🛡️ Cover Protection Tier</label>
+                    <select id="waCoverGrade">
+                        <option value="5-Layer Black Armor Extreme (100% Waterproof + Fleece)">5-Layer Black Armor Extreme (100% Waterproof + Fleece) - Rs. 6,999</option>
+                        <option value="Silver Solar Heat Deflector (99.5% UV Reflection)">Silver Solar Heat Deflector (99.5% UV Reflection) - Rs. 7,499</option>
+                        <option value="Oxford Heavy Duty SUV Shield">Oxford Heavy Duty SUV Shield - Rs. 8,499</option>
+                        <option value="Motorcycle Heavy Waterproof Body Cover">Motorcycle Heavy Waterproof Body Cover - Rs. 2,999</option>
+                    </select>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>📍 Delivery City *</label>
+                    <input type="text" id="waCity" placeholder="e.g. Lahore, Karachi, Islamabad" required>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>👤 Your Name (Optional)</label>
+                    <input type="text" id="waCustomerName" placeholder="e.g. Muhammad Ali">
+                </div>
+
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 14px; font-weight: 800; font-size: 1rem; margin-top: 8px;">
+                    💬 SEND ORDER TO WHATSAPP (+92 307 2818652)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header Search Modal Overlay -->
+    <div class="search-modal-overlay" id="searchModalOverlay">
+        <div class="search-modal-box">
+            <button type="button" class="search-modal-close" id="searchModalClose" aria-label="Close search">&times;</button>
+            <div class="eyebrow">Catalogue Search</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.55rem; margin: 6px 0 16px; color: var(--text-primary); font-weight: 400;">
+                Find Exact Cover For Your Vehicle
+            </h3>
+            <form action="shop.html" method="GET" class="search-modal-input-wrap">
+                <span class="search-modal-icon">🔍</span>
+                <input type="text" name="search" id="modalSearchInput" class="search-modal-input" placeholder="Type car make or model (e.g. Alto, Civic, Corolla, Fortuner, Sportage)..." autocomplete="off" autofocus>
+            </form>
+            <div class="search-quick-tags">
+                <span class="search-tag-label">Popular in Pakistan:</span>
+                <a href="shop.html?search=Alto" class="search-quick-tag">Suzuki Alto</a>
+                <a href="shop.html?search=Civic" class="search-quick-tag">Honda Civic</a>
+                <a href="shop.html?search=Corolla" class="search-quick-tag">Toyota Corolla</a>
+                <a href="shop.html#suv" class="search-quick-tag">Fortuner / Sportage SUV</a>
+                <a href="shop.html?search=Prado" class="search-quick-tag">Prado & LC300</a>
+                <a href="shop.html#bike" class="search-quick-tag">Honda 125 Bike</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Menu">
+        <div class="mobile-nav-header">
+            <a href="index.html" class="brand-logo">
+                <div class="logo-crest">
+                    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                        <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                    </svg>
+                </div>
+                <div class="logo-typography">
+                    <span class="logo-main" style="font-size: 1.15rem;">AUTOSHIELD</span>
+                    <span class="logo-sub" style="font-size: 0.5rem;">BESPOKE CAR COVERS</span>
+                </div>
+            </a>
+            <button type="button" class="modal-close-btn" id="mobileNavClose" aria-label="Close menu">&times;</button>
+        </div>
+
+        <div class="mobile-nav-body">
+            <ul class="mobile-nav-list">
+                <li><a href="index.html" class="">Home</a></li>
+                
+                <li class="mobile-nav-heading">The Collection</li>
+                <li><a href="shop.html#sedan">— Indoor Velvet Coupe & Sedan</a></li>
+                <li><a href="shop.html#suv">— SUV & 4x4 Heavy Armor</a></li>
+                <li><a href="shop.html#sedan">— All-Weather Outdoor Deflector</a></li>
+                <li><a href="shop.html#bike">— Motorcycle Armor Shield</a></li>
+
+                <li class="mobile-nav-heading">Browse</li>
+                <li><a href="shop.html" class="">Complete Catalogue</a></li>
+                <li><a href="about.html" class="">About & Technology</a></li>
+                <li><a href="contact.html" class="">Contact Us</a></li>
+
+                                    <li><a href="shop.html">Account Login</a></li>
+                            </ul>
+
+            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover." target="_blank" class="btn btn-whatsapp btn-full">
+                    💬 WhatsApp Order Support
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Core Scripts -->
+    <script src="index.htmljs/autoshield-core.js?v=1792924381"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            initCartPage();
-        });
+        /* ── Flash auto-dismiss ── */
+        setTimeout(() => {
+            const alert = document.getElementById('flash-alert');
+            if (alert) { alert.style.opacity='0'; alert.style.transition='opacity 0.4s'; setTimeout(()=>alert.remove(), 400); }
+        }, 4500);
+
+        /* ── Scroll Reveal (IntersectionObserver) ── */
+        (function() {
+            // Only apply reveal to elements that benefit from animation,
+            // NOT product-grid items to avoid blank product grids
+            const els = document.querySelectorAll('.section-head, .review-card, .trust-item, .stat-block, .contact-glass-card, .contact-channel-card, .tech-detail-card, .faq-item');
+            els.forEach((el, i) => {
+                el.classList.add('reveal');
+                // Stagger by modulo so max 5 delays
+                el.classList.add('reveal-delay-' + Math.min(i % 4, 3));
+            });
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+            els.forEach(el => io.observe(el));
+
+            // Make all category and product cards visible immediately on page load
+            // (they use CSS hover transitions, not scroll reveal)
+            document.querySelectorAll('.product-card, .category-card, .layer-row').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        })();
+
+        /* ── Animated Number Counters ── */
+        (function() {
+            function animateCount(el) {
+                const target = parseFloat(el.dataset.target);
+                const isFloat = el.dataset.float === 'true';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1800;
+                const start = performance.now();
+                function step(now) {
+                    const pct = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - pct, 3);
+                    const val = target * ease;
+                    el.textContent = (isFloat ? val.toFixed(1) : Math.round(val).toLocaleString()) + suffix;
+                    if (pct < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+            const counters = document.querySelectorAll('[data-target]');
+            if (counters.length) {
+                const cio = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+                    });
+                }, { threshold: 0.5 });
+                counters.forEach(c => cio.observe(c));
+            }
+        })();
+
+        /* ── FAQ Accordion ── */
+        (function() {
+            document.querySelectorAll('.faq-question').forEach(function(q) {
+                q.addEventListener('click', function() {
+                    const item = this.closest('.faq-item');
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item.active').forEach(function(a) { a.classList.remove('active'); });
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+        })();
+
+        /* ── Quick-chip vehicle selector ── */
+        (function() {
+            document.querySelectorAll('.quick-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                    const make = this.dataset.make;
+                    const model = this.dataset.model;
+                    const makeEl = document.getElementById('fitMake');
+                    const modelEl = document.getElementById('fitModel');
+                    if (makeEl) makeEl.value = make;
+                    if (modelEl) modelEl.value = model;
+                    const fitBox = document.getElementById('fit-finder');
+                    if (fitBox) fitBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+        })();
     </script>
-</body>
+    </body>
 </html>

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', "AutoShield — Premium Car & Vehicle Top Covers")</title>
+    <meta name="description" content="@yield('meta_description', 'Shop 100% waterproof, UV reflective, custom-fit car top covers in Pakistan. Cash on delivery nationwide.')">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <!-- Google Fonts (Velox Luxury Typography) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&family=Montserrat:wght@200;300;400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Original Stylesheet -->
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?v={{ time() }}">
+    <!-- Professional Enhancements -->
+    <link rel="stylesheet" href="{{ asset('css/enhancements.css') }}?v={{ time() }}">
+    <link rel="icon" type="image/png" href="{{ asset('autoshield-logo.png') }}">
+
+    @stack('styles')
+</head>
+<body>
+
+    <!-- Flash Notifications -->
+    @if(session('success'))
+        <div class="alert-box alert-success" id="flash-alert">
+            <span>✅ {{ session('success') }}</span>
+            <button onclick="this.parentElement.remove()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">&times;</button>
+        </div>
+    @endif
+
+    @if(session('error'))
+        <div class="alert-box alert-error" id="flash-alert">
+            <span>❌ {{ session('error') }}</span>
+            <button onclick="this.parentElement.remove()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">&times;</button>
+        </div>
+    @endif
+
+    @if(session('info'))
+        <div class="alert-box alert-info" id="flash-alert">
+            <span>ℹ️ {{ session('info') }}</span>
+            <button onclick="this.parentElement.remove()" style="background:none; border:none; color:#fff; cursor:pointer; font-size:1.2rem;">&times;</button>
+        </div>
+    @endif
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover."
+       class="whatsapp-float" target="_blank" rel="noopener" title="Order on WhatsApp" id="waFloat">
+        <span class="whatsapp-float-pulse"></span>
+        💬
+    </a>
+
+    <!-- Top Announcement Bar -->
+    <div class="topbar">
+        <div class="topbar-content">
+            <span class="topbar-badge">SPECIAL OFFER</span>
+            <span>⚡ FREE DELIVERY ON ORDERS OVER RS. 5,000 &nbsp;•&nbsp; CASH ON DELIVERY NATIONWIDE &nbsp;•&nbsp; 1-YEAR WARRANTY INCLUDED</span>
+            <span>📞 +92 307 2818652</span>
+        </div>
+    </div>
+
+    <!-- Sticky Navigation Header -->
+    <header class="header">
+        <div class="container nav">
+            <!-- Elegant Gold Brand Logo -->
+            <a href="{{ route('home') }}" class="brand-logo" aria-label="AutoShield Bespoke Vehicle Covers">
+                <div class="logo-crest">
+                    <svg width="34" height="34" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                        <path d="M20 7L31 12V20C31 27.5 26 33.2 20 35.8C14 33.2 9 27.5 9 20V12L20 7Z" stroke="#D0AC59" stroke-width="1.2" stroke-dasharray="2 2" fill="none" />
+                        <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                        <circle cx="20" cy="18" r="1.5" fill="#E9E5DF" />
+                    </svg>
+                </div>
+                <div class="logo-typography">
+                    <span class="logo-main">AUTOSHIELD</span>
+                    <span class="logo-sub">BESPOKE CAR COVERS</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation Links -->
+            <ul class="nav-links">
+                <li>
+                    <a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
+                </li>
+                
+                <!-- The Collection Dropdown -->
+                <li class="nav-item-dropdown">
+                    <a href="{{ route('shop.index') }}" class="{{ request()->routeIs('shop.*') && !request()->query('search') ? 'active' : '' }}">
+                        The Collection <span class="nav-arrow">▾</span>
+                    </a>
+                    <div class="nav-dropdown-menu">
+                        <div class="dropdown-inner">
+                            <a href="{{ route('shop.index', ['body' => 'sedan']) }}" class="dropdown-link">
+                                <span class="dropdown-link-title">Indoor Velvet Coupe & Sedan</span>
+                                <span class="dropdown-link-desc">Ultra-soft cotton velvet lining, zero swirl marks, dustproof</span>
+                            </a>
+                            <a href="{{ route('shop.index', ['body' => 'suv']) }}" class="dropdown-link">
+                                <span class="dropdown-link-title">SUV & 4x4 Heavy Armor</span>
+                                <span class="dropdown-link-desc">Reinforced 5-layer outdoor barrier with storm wind-buckles</span>
+                            </a>
+                            <a href="{{ route('shop.index', ['category' => 'Car Covers']) }}" class="dropdown-link">
+                                <span class="dropdown-link-title">All-Weather Outdoor Deflector</span>
+                                <span class="dropdown-link-desc">100% Monsoon waterproof and 99.5% Solar UV heat deflection</span>
+                            </a>
+                            <a href="{{ route('shop.index', ['category' => 'Bike Covers']) }}" class="dropdown-link">
+                                <span class="dropdown-link-title">Motorcycle Armor Shield</span>
+                                <span class="dropdown-link-desc">Heat-resistant exhaust panels and snug elastic fit</span>
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="{{ route('shop.index') }}" class="dropdown-link-all">
+                                <span>View Complete Catalogue</span>
+                                <span>&rarr;</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+
+                <li>
+                    <a href="{{ route('shop.index') }}" class="{{ request()->routeIs('shop.index') ? 'active' : '' }}">Shop</a>
+                </li>
+
+                <li>
+                    <a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a>
+                </li>
+
+                @auth
+                    @if(auth()->user()->isAdmin())
+                        <li><a href="{{ route('admin.dashboard') }}" style="color: var(--gold-accent); font-weight:700;">⚙️ Admin</a></li>
+                    @endif
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" style="display:inline;">
+                            @csrf
+                            <button type="submit" class="nav-logout-btn">Logout</button>
+                        </form>
+                    </li>
+                @else
+                    <li><a href="{{ route('login') }}" class="{{ request()->routeIs('login') ? 'active' : '' }}">Login</a></li>
+                @endauth
+            </ul>
+
+            <!-- Minimal Actions: Search, Wishlist, Cart Drawer, Mobile Toggle -->
+            <div class="header-actions">
+                <!-- Search Icon Button -->
+                <button type="button" class="nav-icon-btn" id="headerSearchToggle" title="Search Covers" aria-label="Open search dialog">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </button>
+
+                <!-- Liked / Wishlist Icon Button -->
+                <button type="button" class="nav-icon-btn wishlist-nav-btn" id="wishlistHeaderBtn" title="Saved Covers" aria-label="Saved Covers">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                    </svg>
+                    <span class="badge" id="wishlistCount" style="display:none;">0</span>
+                </button>
+
+                <!-- Shopping Cart Icon Button with Counter Badge -->
+                @php
+                    $cartItems = session('cart', []);
+                    $cartCount = array_sum(array_column($cartItems, 'quantity'));
+                @endphp
+                <button type="button" class="nav-icon-btn" id="headerCartBtn" data-cart-trigger title="Shopping Cart" aria-label="Open shopping cart drawer">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <path d="M16 10a4 4 0 0 1-8 0"></path>
+                    </svg>
+                    <span class="badge" id="cartCount">{{ $cartCount }}</span>
+                </button>
+
+                <!-- Responsive Mobile Menu Toggle Button -->
+                <button type="button" class="mobile-toggle-btn" id="mobileNavToggle" aria-label="Toggle navigation menu">
+                    <span>☰</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Page Content -->
+    <main>
+        @yield('content')
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-grid">
+            <div class="footer-brand">
+                <a href="{{ route('home') }}" class="brand-logo" style="margin-bottom: 18px; display:inline-flex;">
+                    <div class="logo-crest">
+                        <svg width="32" height="32" viewBox="0 0 40 40" fill="none">
+                            <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                            <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                        </svg>
+                    </div>
+                    <div class="logo-typography">
+                        <span class="logo-main" style="font-size: 1.3rem;">AUTOSHIELD</span>
+                        <span class="logo-sub" style="font-size: 0.52rem;">BESPOKE CAR COVERS</span>
+                    </div>
+                </a>
+                <p style="color: var(--text-muted); font-size: 0.88rem; line-height: 1.7; margin-bottom: 20px;">
+                    Premier tailor-crafted vehicle protective covers, extreme weather SUV armor, and indoor velvet dust shields in Pakistan. Guaranteed custom fit with nationwide Cash on Delivery.
+                </p>
+                <div>
+                    <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover." target="_blank" class="btn btn-whatsapp btn-sm">
+                        💬 WHATSAPP: +92 307 2818652 →
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4>The Collection</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ route('shop.index', ['body' => 'sedan']) }}">Indoor Velvet Coupe & Sedan</a></li>
+                    <li><a href="{{ route('shop.index', ['body' => 'suv']) }}">SUV & 4x4 Heavy Shield</a></li>
+                    <li><a href="{{ route('shop.index', ['category' => 'Car Covers']) }}">All-Weather Outdoor Armor</a></li>
+                    <li><a href="{{ route('shop.index', ['body' => 'bike']) }}">Motorcycle Body Shield</a></li>
+                    <li><a href="{{ route('shop.index') }}">Complete Catalogue</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Customer Care</h4>
+                <ul class="footer-links">
+                    <li><a href="{{ route('cart.index') }}">Shopping Cart Drawer</a></li>
+                    <li><a href="{{ route('about') }}">5-Layer Composite Specs</a></li>
+                    <li><a href="{{ route('contact') }}">Fitment Guarantee & Exchange</a></li>
+                    <li><a href="{{ route('contact') }}">FAQ & Nationwide Shipping</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4>Atelier & Contact</h4>
+                <div style="font-size: 0.88rem; line-height: 1.8; color: var(--text-muted);">
+                    <p>📍 AutoShield HQ, Gulberg III, Lahore</p>
+                    <p>💬 WhatsApp: <a href="https://wa.me/923072818652" target="_blank" style="color:var(--gold-accent); text-decoration:none; font-weight:600;">+92 307 2818652</a></p>
+                    <p>📞 Phone: <a href="tel:03072818652" style="color:inherit; text-decoration:none;">0307-2818652</a></p>
+                    <p>✉ Email: support@autoshield.pk</p>
+                    <p>🕒 Mon - Sat (9:00 AM - 9:00 PM)</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="container" style="border-top: 1px solid var(--border-color); padding-top: 24px; text-align: center; color: var(--text-muted); font-size: 0.82rem; letter-spacing: 0.5px;">
+            © {{ date('Y') }} AutoShield Bespoke Car Covers. All Rights Reserved. • Guaranteed Exact Fitment Nationwide
+        </div>
+    </footer>
+
+    <!-- Slide-Out Cart Drawer Component -->
+    <div class="cart-drawer-overlay" id="cartDrawerOverlay"></div>
+    <aside class="cart-drawer" id="cartDrawer" aria-label="Shopping Cart Drawer">
+        <div class="cart-drawer-header">
+            <h3>🛒 Your Cover Cart (<span class="cart-count-badge">{{ $cartCount }}</span>)</h3>
+            <button type="button" class="drawer-close-btn" id="cartDrawerClose" title="Close Cart">&times;</button>
+        </div>
+
+        <div class="free-shipping-progress">
+            @php
+                $cartSubtotal = array_sum(array_map(fn($item) => $item['price'] * $item['quantity'], $cartItems));
+                $freeShippingPct = min(100, round(($cartSubtotal / 5000) * 100));
+            @endphp
+            <div class="shipping-bar-text" id="shippingBarText">
+                @if($cartSubtotal >= 5000)
+                    🎉 <strong>FREE Nationwide Delivery Unlocked!</strong>
+                @else
+                    🚚 Add <strong>Rs. {{ number_format(5000 - $cartSubtotal) }}</strong> more to unlock <strong>FREE Delivery!</strong>
+                @endif
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" id="shippingProgressFill" style="width: {{ $freeShippingPct }}%;"></div>
+            </div>
+        </div>
+
+        <div class="cart-drawer-body" id="drawerCartList">
+            <!-- Dynamically populated via autoshield-core.js -->
+        </div>
+
+        <div class="cart-drawer-footer">
+            <div class="drawer-subtotal-row">
+                <span>Subtotal:</span>
+                <span class="drawer-subtotal-price" id="drawerSubtotal">Rs. {{ number_format($cartSubtotal) }}</span>
+            </div>
+            <p class="drawer-cod-note">✅ Cash on Delivery (COD) available in all 150+ cities across Pakistan.</p>
+            <div style="display:flex; flex-direction:column; gap:10px;">
+                <a href="{{ route('checkout.index') }}" class="btn btn-primary" style="width:100%; text-align:center; padding:14px;">
+                    PROCEED TO CHECKOUT →
+                </a>
+                <a href="#" id="drawerWaCheckout" class="btn btn-whatsapp" target="_blank" style="width:100%; text-align:center; padding:12px; display:flex; align-items:center; justify-content:center; gap:8px;">
+                    💬 Order Cart via WhatsApp
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Slide-Out Wishlist Drawer Component -->
+    <div class="wishlist-drawer-overlay" id="wishlistDrawerOverlay"></div>
+    <aside class="wishlist-drawer" id="wishlistDrawer" aria-label="Saved Covers Wishlist">
+        <div class="wishlist-drawer-header">
+            <h3>
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="var(--red)" stroke="var(--red)" stroke-width="2" style="display:inline-block; vertical-align:middle;">
+                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"></path>
+                </svg>
+                Liked Covers (<span id="wishlistDrawerCount">0</span>)
+            </h3>
+            <button type="button" class="drawer-close-btn" id="wishlistDrawerClose" title="Close Wishlist">&times;</button>
+        </div>
+
+        <div class="wishlist-drawer-body" id="wishlistDrawerBody">
+            <!-- Dynamically populated via autoshield-core.js -->
+        </div>
+
+        <div class="wishlist-drawer-footer">
+            <a href="{{ route('shop.index') }}" class="btn btn-primary" style="width:100%; text-align:center; padding:13px;" onclick="closeWishlistDrawer()">
+                Browse All Vehicle Covers →
+            </a>
+        </div>
+    </aside>
+
+    <!-- Global Toast for Wishlist & Actions -->
+    <div class="wishlist-toast" id="wishlistToast">
+        <span id="wishlistToastIcon">❤️</span>
+        <span id="wishlistToastMsg">Added to your liked covers</span>
+    </div>
+
+    <!-- Global Quick View Modal -->
+    <div class="modal-overlay" id="quickViewModal">
+        <div class="modal-card">
+            <button type="button" class="modal-close-btn" id="quickViewClose" title="Close">&times;</button>
+            <div class="quickview-grid">
+                <div class="quickview-img">
+                    <img id="qvImage" src="{{ asset('images/covers/civic_velvet_bespoke.jpg') }}" alt="Product Image">
+                </div>
+                <div>
+                    <div class="eyebrow" id="qvCategory">Car Covers • All-Weather</div>
+                    <h2 id="qvTitle" style="font-size: 1.5rem; margin: 8px 0 12px; color: #fff;">Premium Cover</h2>
+                    
+                    <div class="product-price-row" style="margin-bottom: 16px;">
+                        <span class="current-price" id="qvPrice" style="font-size: 1.6rem; color: var(--gold-accent);">Rs. 6,999</span>
+                        <span class="old-price" id="qvOldPrice" style="font-size: 1rem;">Rs. 8,999</span>
+                    </div>
+
+                    <p id="qvDesc" style="color: var(--text-secondary); font-size: 0.88rem; line-height: 1.6; margin-bottom: 20px;">
+                        Heavy duty all-weather vehicle cover.
+                    </p>
+
+                    <form action="{{ route('cart.add') }}" method="POST" id="qvForm">
+                        @csrf
+                        <input type="hidden" name="product_id" id="qvProductId" value="1">
+                        
+                        <div style="margin-bottom: 16px;">
+                            <label style="display:block; font-size:0.8rem; font-weight:700; margin-bottom:6px; color:var(--text-secondary);">Select Vehicle Size:</label>
+                            <select name="size" style="width: 100%; padding: 10px 14px; background: #090B10; border: 1px solid var(--border); border-radius: var(--radius-md); color:#fff; font-size:0.88rem;">
+                                <option value="Standard Fit">Standard Fit (Guaranteed)</option>
+                                <option value="Custom Size Fitment">Custom Vehicle Fitment</option>
+                                <option value="Oversized XL">Oversized Extra Large</option>
+                            </select>
+                        </div>
+
+                        <div style="display:flex; gap:10px; margin-bottom: 14px;">
+                            <button type="submit" class="btn btn-primary" style="flex:1; padding:12px;">
+                                🛒 Add to Cart
+                            </button>
+                            <a href="#" id="qvWaBtn" target="_blank" class="btn btn-whatsapp" style="padding:12px 16px;" title="Order via WhatsApp">
+                                💬
+                            </a>
+                        </div>
+                    </form>
+
+                    <a href="#" id="qvDetailLink" style="font-size:0.85rem; color:var(--text-muted); text-decoration:underline;">
+                        View Full Technical Specifications & Warranty Details →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Direct WhatsApp Order Modal -->
+    <div class="modal-overlay" id="waOrderModal">
+        <div class="modal-card" style="max-width: 520px;">
+            <button type="button" class="modal-close-btn" id="waOrderClose" title="Close">&times;</button>
+            <div style="text-align: center; margin-bottom: 20px;">
+                <div style="font-size: 2.2rem; margin-bottom: 6px;">💬</div>
+                <h3 style="font-size: 1.3rem; color: #fff;">Fast WhatsApp Order</h3>
+                <p style="font-size: 0.85rem; color: var(--text-secondary);">No forms or sign-ups required. Send your vehicle details directly to our WhatsApp support team!</p>
+            </div>
+
+            <form id="waOrderForm">
+                <div class="wa-order-field">
+                    <label>🚗 Your Vehicle Make & Model *</label>
+                    <input type="text" id="waVehicleModel" placeholder="e.g. Honda Civic 2022 or Suzuki Alto" required>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>🛡️ Cover Protection Tier</label>
+                    <select id="waCoverGrade">
+                        <option value="5-Layer Black Armor Extreme (100% Waterproof + Fleece)">5-Layer Black Armor Extreme (100% Waterproof + Fleece) - Rs. 6,999</option>
+                        <option value="Silver Solar Heat Deflector (99.5% UV Reflection)">Silver Solar Heat Deflector (99.5% UV Reflection) - Rs. 7,499</option>
+                        <option value="Oxford Heavy Duty SUV Shield">Oxford Heavy Duty SUV Shield - Rs. 8,499</option>
+                        <option value="Motorcycle Heavy Waterproof Body Cover">Motorcycle Heavy Waterproof Body Cover - Rs. 2,999</option>
+                    </select>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>📍 Delivery City *</label>
+                    <input type="text" id="waCity" placeholder="e.g. Lahore, Karachi, Islamabad" required>
+                </div>
+
+                <div class="wa-order-field">
+                    <label>👤 Your Name (Optional)</label>
+                    <input type="text" id="waCustomerName" placeholder="e.g. Muhammad Ali">
+                </div>
+
+                <button type="submit" class="btn btn-whatsapp" style="width: 100%; padding: 14px; font-weight: 800; font-size: 1rem; margin-top: 8px;">
+                    💬 SEND ORDER TO WHATSAPP (+92 307 2818652)
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Header Search Modal Overlay -->
+    <div class="search-modal-overlay" id="searchModalOverlay">
+        <div class="search-modal-box">
+            <button type="button" class="search-modal-close" id="searchModalClose" aria-label="Close search">&times;</button>
+            <div class="eyebrow">Catalogue Search</div>
+            <h3 style="font-family: var(--font-serif); font-size: 1.55rem; margin: 6px 0 16px; color: var(--text-primary); font-weight: 400;">
+                Find Exact Cover For Your Vehicle
+            </h3>
+            <form action="{{ route('shop.index') }}" method="GET" class="search-modal-input-wrap">
+                <span class="search-modal-icon">🔍</span>
+                <input type="text" name="search" id="modalSearchInput" class="search-modal-input" placeholder="Type car make or model (e.g. Alto, Civic, Corolla, Fortuner, Sportage)..." autocomplete="off" autofocus>
+            </form>
+            <div class="search-quick-tags">
+                <span class="search-tag-label">Popular in Pakistan:</span>
+                <a href="{{ route('shop.index', ['search' => 'Alto']) }}" class="search-quick-tag">Suzuki Alto</a>
+                <a href="{{ route('shop.index', ['search' => 'Civic']) }}" class="search-quick-tag">Honda Civic</a>
+                <a href="{{ route('shop.index', ['search' => 'Corolla']) }}" class="search-quick-tag">Toyota Corolla</a>
+                <a href="{{ route('shop.index', ['body' => 'suv']) }}" class="search-quick-tag">Fortuner / Sportage SUV</a>
+                <a href="{{ route('shop.index', ['search' => 'Prado']) }}" class="search-quick-tag">Prado & LC300</a>
+                <a href="{{ route('shop.index', ['category' => 'Bike Covers']) }}" class="search-quick-tag">Honda 125 Bike</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div class="mobile-nav-overlay" id="mobileNavOverlay"></div>
+    <aside class="mobile-nav-drawer" id="mobileNavDrawer" aria-label="Mobile Navigation Menu">
+        <div class="mobile-nav-header">
+            <a href="{{ route('home') }}" class="brand-logo">
+                <div class="logo-crest">
+                    <svg width="28" height="28" viewBox="0 0 40 40" fill="none">
+                        <path d="M20 2L36 9V20C36 30 29 37 20 40C11 37 4 30 4 20V9L20 2Z" stroke="#B89445" stroke-width="2" fill="#141414" />
+                        <path d="M20 12L25 25H21.5L20 20.8L18.5 25H15L20 12Z" fill="#B89445" />
+                    </svg>
+                </div>
+                <div class="logo-typography">
+                    <span class="logo-main" style="font-size: 1.15rem;">AUTOSHIELD</span>
+                    <span class="logo-sub" style="font-size: 0.5rem;">BESPOKE CAR COVERS</span>
+                </div>
+            </a>
+            <button type="button" class="modal-close-btn" id="mobileNavClose" aria-label="Close menu">&times;</button>
+        </div>
+
+        <div class="mobile-nav-body">
+            <ul class="mobile-nav-list">
+                <li><a href="{{ route('home') }}" class="{{ request()->routeIs('home') ? 'active' : '' }}">Home</a></li>
+                
+                <li class="mobile-nav-heading">The Collection</li>
+                <li><a href="{{ route('shop.index', ['body' => 'sedan']) }}">— Indoor Velvet Coupe & Sedan</a></li>
+                <li><a href="{{ route('shop.index', ['body' => 'suv']) }}">— SUV & 4x4 Heavy Armor</a></li>
+                <li><a href="{{ route('shop.index', ['category' => 'Car Covers']) }}">— All-Weather Outdoor Deflector</a></li>
+                <li><a href="{{ route('shop.index', ['category' => 'Bike Covers']) }}">— Motorcycle Armor Shield</a></li>
+
+                <li class="mobile-nav-heading">Browse</li>
+                <li><a href="{{ route('shop.index') }}" class="{{ request()->routeIs('shop.*') ? 'active' : '' }}">Complete Catalogue</a></li>
+                <li><a href="{{ route('about') }}" class="{{ request()->routeIs('about') ? 'active' : '' }}">About & Technology</a></li>
+                <li><a href="{{ route('contact') }}" class="{{ request()->routeIs('contact') ? 'active' : '' }}">Contact Us</a></li>
+
+                @auth
+                    @if(auth()->user()->isAdmin())
+                        <li><a href="{{ route('admin.dashboard') }}" style="color:var(--gold-accent);">⚙️ Admin Dashboard</a></li>
+                    @endif
+                    <li>
+                        <form action="{{ route('logout') }}" method="POST" style="margin-top: 8px;">
+                            @csrf
+                            <button type="submit" class="nav-logout-btn" style="padding:0;">Logout</button>
+                        </form>
+                    </li>
+                @else
+                    <li><a href="{{ route('login') }}">Account Login</a></li>
+                @endauth
+            </ul>
+
+            <div style="margin-top: 32px; padding-top: 20px; border-top: 1px solid var(--border-color);">
+                <a href="https://wa.me/923072818652?text=Hello%20AutoShield!%20I%20want%20to%20order%20a%20car%20cover." target="_blank" class="btn btn-whatsapp btn-full">
+                    💬 WhatsApp Order Support
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Core Scripts -->
+    <script src="{{ asset('js/autoshield-core.js') }}?v={{ time() }}"></script>
+    <script>
+        /* ── Flash auto-dismiss ── */
+        setTimeout(() => {
+            const alert = document.getElementById('flash-alert');
+            if (alert) { alert.style.opacity='0'; alert.style.transition='opacity 0.4s'; setTimeout(()=>alert.remove(), 400); }
+        }, 4500);
+
+        /* ── Scroll Reveal (IntersectionObserver) ── */
+        (function() {
+            // Only apply reveal to elements that benefit from animation,
+            // NOT product-grid items to avoid blank product grids
+            const els = document.querySelectorAll('.section-head, .review-card, .trust-item, .stat-block, .contact-glass-card, .contact-channel-card, .tech-detail-card, .faq-item');
+            els.forEach((el, i) => {
+                el.classList.add('reveal');
+                // Stagger by modulo so max 5 delays
+                el.classList.add('reveal-delay-' + Math.min(i % 4, 3));
+            });
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        io.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.05, rootMargin: '0px 0px 60px 0px' });
+            els.forEach(el => io.observe(el));
+
+            // Make all category and product cards visible immediately on page load
+            // (they use CSS hover transitions, not scroll reveal)
+            document.querySelectorAll('.product-card, .category-card, .layer-row').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'none';
+            });
+        })();
+
+        /* ── Animated Number Counters ── */
+        (function() {
+            function animateCount(el) {
+                const target = parseFloat(el.dataset.target);
+                const isFloat = el.dataset.float === 'true';
+                const suffix = el.dataset.suffix || '';
+                const duration = 1800;
+                const start = performance.now();
+                function step(now) {
+                    const pct = Math.min((now - start) / duration, 1);
+                    const ease = 1 - Math.pow(1 - pct, 3);
+                    const val = target * ease;
+                    el.textContent = (isFloat ? val.toFixed(1) : Math.round(val).toLocaleString()) + suffix;
+                    if (pct < 1) requestAnimationFrame(step);
+                }
+                requestAnimationFrame(step);
+            }
+            const counters = document.querySelectorAll('[data-target]');
+            if (counters.length) {
+                const cio = new IntersectionObserver(entries => {
+                    entries.forEach(e => {
+                        if (e.isIntersecting) { animateCount(e.target); cio.unobserve(e.target); }
+                    });
+                }, { threshold: 0.5 });
+                counters.forEach(c => cio.observe(c));
+            }
+        })();
+
+        /* ── FAQ Accordion ── */
+        (function() {
+            document.querySelectorAll('.faq-question').forEach(function(q) {
+                q.addEventListener('click', function() {
+                    const item = this.closest('.faq-item');
+                    const isActive = item.classList.contains('active');
+                    document.querySelectorAll('.faq-item.active').forEach(function(a) { a.classList.remove('active'); });
+                    if (!isActive) item.classList.add('active');
+                });
+            });
+        })();
+
+        /* ── Quick-chip vehicle selector ── */
+        (function() {
+            document.querySelectorAll('.quick-chip').forEach(function(chip) {
+                chip.addEventListener('click', function() {
+                    const make = this.dataset.make;
+                    const model = this.dataset.model;
+                    const makeEl = document.getElementById('fitMake');
+                    const modelEl = document.getElementById('fitModel');
+                    if (makeEl) makeEl.value = make;
+                    if (modelEl) modelEl.value = model;
+                    const fitBox = document.getElementById('fit-finder');
+                    if (fitBox) fitBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                });
+            });
+        })();
+    </script>
+    @stack('scripts')
+</body>
+</html>
