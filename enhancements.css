@@ -1288,6 +1288,632 @@ nav[aria-label="pagination"] span[aria-current="page"] {
   border-radius: var(--radius-sm);
 }
 
+/* ==========================================================================
+   AUTOSHIELD ULTRA-RESPONSIVE MOBILE ENGINE
+   Flawless mobile layout, fluid typography, touch interactions, zero overflow
+   ========================================================================== */
+
+/* 1. Global Viewport & Reset Protection */
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+  position: relative !important;
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box !important;
+}
+
+img, video, svg {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Form input sizing on mobile - strictly 16px to prevent iOS auto-zoom */
+@media (max-width: 860px) {
+  input[type="text"],
+  input[type="tel"],
+  input[type="email"],
+  input[type="number"],
+  input[type="search"],
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+}
+
+/* 2. Top Announcement Bar on Mobile */
+@media (max-width: 768px) {
+  .topbar {
+    padding: 6px 12px !important;
+    font-size: 0.72rem !important;
+  }
+  .topbar-content {
+    display: flex !important;
+    flex-direction: row !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
+    white-space: nowrap !important;
+    overflow-x: auto !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .topbar-content::-webkit-scrollbar {
+    display: none !important;
+  }
+  .topbar-content span:nth-child(2) {
+    display: inline !important;
+  }
+}
+
+/* 3. Header & Navigation Drawer on Mobile */
+@media (max-width: 992px) {
+  .header {
+    height: 64px !important;
+  }
+  .header .container.nav {
+    height: 64px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+    gap: 8px !important;
+  }
+  .brand-logo {
+    gap: 8px !important;
+  }
+  .logo-crest svg {
+    width: 28px !important;
+    height: 28px !important;
+  }
+  .logo-main {
+    font-size: 1.05rem !important;
+    letter-spacing: 0.12em !important;
+  }
+  .logo-sub {
+    font-size: 0.44rem !important;
+    letter-spacing: 0.1em !important;
+  }
+  .nav-links {
+    display: none !important;
+  }
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+  .nav-icon-btn {
+    width: 38px !important;
+    height: 38px !important;
+    padding: 0 !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .mobile-toggle-btn {
+    display: inline-flex !important;
+    width: 38px !important;
+    height: 38px !important;
+    font-size: 1.25rem !important;
+    border-radius: var(--radius-sm) !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    color: var(--text-primary) !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Robust Slide-Over Mobile Drawer */
+  .mobile-nav-overlay {
+    position: fixed !important;
+    inset: 0 !important;
+    background: rgba(0, 0, 0, 0.78) !important;
+    backdrop-filter: blur(8px) !important;
+    -webkit-backdrop-filter: blur(8px) !important;
+    z-index: 10001 !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    transition: opacity 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s !important;
+  }
+  .mobile-nav-overlay.open {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+  .mobile-nav-drawer {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: min(320px, 86vw) !important;
+    max-width: 86vw !important;
+    height: 100dvh !important;
+    background: #0D0E12 !important;
+    border-right: 1px solid var(--border-color) !important;
+    z-index: 10002 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    transform: translateX(-100%) !important;
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-shadow: 20px 0 50px rgba(0, 0, 0, 0.9) !important;
+  }
+  .mobile-nav-drawer.open {
+    transform: translateX(0) !important;
+  }
+  .mobile-nav-header {
+    padding: 16px 18px !important;
+    border-bottom: 1px solid var(--border-color) !important;
+  }
+  .mobile-nav-body {
+    padding: 18px 16px calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+    overflow-y: auto !important;
+  }
+  .mobile-nav-list li a {
+    display: flex !important;
+    align-items: center !important;
+    padding: 12px 14px !important;
+    font-size: 0.95rem !important;
+    border-radius: 8px !important;
+    color: var(--text-secondary) !important;
+    transition: all 0.2s ease !important;
+  }
+  .mobile-nav-list li a:hover,
+  .mobile-nav-list li a.active {
+    background: rgba(184, 148, 69, 0.12) !important;
+    color: var(--gold-accent) !important;
+    border-left: 3px solid var(--gold-accent) !important;
+  }
+}
+
+/* 4. Hero Section Mobile Responsiveness */
+@media (max-width: 860px) {
+  .hero {
+    padding: 28px 0 36px !important;
+  }
+  .hero-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 22px !important;
+    text-align: center !important;
+  }
+  .hero-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+  }
+  .hero-badge {
+    margin: 0 auto 14px auto !important;
+    font-size: 0.72rem !important;
+    padding: 4px 12px !important;
+  }
+  .hero-content h1 {
+    font-size: clamp(1.9rem, 7.5vw, 2.5rem) !important;
+    line-height: 1.15 !important;
+    margin-bottom: 14px !important;
+  }
+  .hero-content p {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+    max-width: 100% !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-visual {
+    order: 0 !important;
+    max-width: 330px !important;
+    margin: 8px auto 18px auto !important;
+    width: 100% !important;
+  }
+  .hero-visual img {
+    max-height: 200px !important;
+    width: auto !important;
+    margin: 0 auto !important;
+    object-fit: contain !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .hero-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    gap: 10px !important;
+    margin-bottom: 20px !important;
+  }
+  .hero-actions .btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    padding: 14px !important;
+    font-size: 0.92rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .hero-stats {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 14px 10px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .hero-stat {
+    padding: 4px !important;
+    text-align: center !important;
+  }
+  .hero-stat-number {
+    font-size: 1.35rem !important;
+  }
+  .hero-stat-label {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* 5. Fit Finder Box on Mobile */
+@media (max-width: 860px) {
+  .fit-finder-box {
+    padding: 18px 14px !important;
+    margin-top: 20px !important;
+    border-radius: var(--radius-md) !important;
+  }
+  .fit-finder-title {
+    font-size: 0.92rem !important;
+    margin-bottom: 14px !important;
+  }
+  .fit-finder-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+    width: 100% !important;
+  }
+  .fit-input-group {
+    width: 100% !important;
+  }
+  .fit-input-group select,
+  .fit-input-group input {
+    min-height: 48px !important;
+    font-size: 16px !important;
+    padding: 12px 14px !important;
+    width: 100% !important;
+  }
+  .fit-input-group button {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 0.95rem !important;
+  }
+  .quick-make-chips {
+    display: flex !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    gap: 8px !important;
+    padding: 12px 2px 4px !important;
+    -webkit-overflow-scrolling: touch !important;
+    scrollbar-width: none !important;
+  }
+  .quick-make-chips::-webkit-scrollbar {
+    display: none !important;
+  }
+  .quick-chip {
+    flex-shrink: 0 !important;
+    white-space: nowrap !important;
+    padding: 7px 13px !important;
+    font-size: 0.8rem !important;
+  }
+  .quick-chip-label {
+    flex-shrink: 0 !important;
+    font-size: 0.75rem !important;
+  }
+}
+
+/* 6. Trust Highlights & Stats Row */
+@media (max-width: 768px) {
+  .trust-bar {
+    padding: 16px 0 !important;
+  }
+  .trust-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  .trust-item {
+    padding: 12px 14px !important;
+    gap: 12px !important;
+    background: var(--bg-card) !important;
+    border-radius: var(--radius-sm) !important;
+    border: 1px solid var(--border-color) !important;
+  }
+  .trust-icon {
+    font-size: 1.5rem !important;
+  }
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1px !important;
+    margin-bottom: 36px !important;
+  }
+  .stat-block {
+    padding: 18px 12px !important;
+  }
+  .stat-counter {
+    font-size: 1.7rem !important;
+  }
+  .stat-label {
+    font-size: 0.72rem !important;
+  }
+}
+
+/* 7. Technology & 5-Layer Composite Section */
+@media (max-width: 860px) {
+  .tech-section {
+    padding: 48px 0 !important;
+  }
+  .tech-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+  }
+  .layer-cutaway-display {
+    width: 100% !important;
+  }
+  .layer-row {
+    padding: 12px 14px !important;
+    gap: 10px !important;
+  }
+  .layer-info strong {
+    font-size: 0.88rem !important;
+  }
+  .layer-info span {
+    font-size: 0.74rem !important;
+  }
+  .layer-badge {
+    font-size: 0.65rem !important;
+    padding: 3px 7px !important;
+  }
+  .tech-detail-card {
+    padding: 20px 16px !important;
+  }
+}
+
+/* 8. Product Cards & Shop Grid on Mobile */
+@media (max-width: 560px) {
+  .shop-section {
+    padding: 44px 0 !important;
+  }
+  .product-grid {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+  .product-card {
+    max-width: 440px !important;
+    margin: 0 auto !important;
+    width: 100% !important;
+  }
+  .product-thumb {
+    height: 220px !important;
+  }
+  .product-thumb img {
+    height: 100% !important;
+    width: 100% !important;
+    object-fit: cover !important;
+  }
+  .product-info {
+    padding: 18px 16px !important;
+  }
+  .product-title {
+    font-size: 1.25rem !important;
+    line-height: 1.3 !important;
+  }
+  .velox-spec-table {
+    font-size: 0.78rem !important;
+    margin-bottom: 16px !important;
+  }
+  .velox-spec-table td {
+    padding: 5px 6px !important;
+  }
+  .product-info > div[style*="display:flex; gap:8px"] {
+    display: flex !important;
+    gap: 10px !important;
+    width: 100% !important;
+  }
+  .product-info > div[style*="display:flex; gap:8px"] .btn-primary {
+    flex: 1 !important;
+    min-height: 46px !important;
+    font-size: 0.88rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+  .product-info > div[style*="display:flex; gap:8px"] .btn-whatsapp {
+    width: 46px !important;
+    min-height: 46px !important;
+    padding: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    font-size: 1.25rem !important;
+  }
+}
+
+@media (min-width: 561px) and (max-width: 860px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 16px !important;
+  }
+  .product-thumb {
+    height: 180px !important;
+  }
+}
+
+/* 9. Categories Showcase on Mobile */
+@media (max-width: 860px) {
+  .categories-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  .category-card {
+    height: auto !important;
+    min-height: 220px !important;
+  }
+}
+
+/* 10. Reviews & FAQ on Mobile */
+@media (max-width: 768px) {
+  .reviews-section, .faq-section {
+    padding: 44px 0 !important;
+  }
+  .reviews-grid {
+    grid-template-columns: 1fr !important;
+    gap: 14px !important;
+  }
+  .faq-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+}
+
+/* 11. Shopping Cart & Checkout on Mobile */
+@media (max-width: 860px) {
+  .cart-grid,
+  .cart-checkout-layout,
+  [style*="grid-template-columns: 1.2fr 0.8fr"],
+  [style*="grid-template-columns: 1.4fr 1fr"] {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 28px !important;
+  }
+  .cart-table {
+    display: block !important;
+    width: 100% !important;
+    min-width: 0 !important;
+  }
+  .cart-table thead {
+    display: none !important;
+  }
+  .cart-table tbody {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+  .cart-table tr {
+    display: grid !important;
+    grid-template-columns: 75px 1fr !important;
+    grid-template-areas:
+      "img info"
+      "img price"
+      "qty total"
+      "action action";
+    gap: 8px 12px !important;
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 14px !important;
+  }
+  .cart-table td {
+    padding: 0 !important;
+    border: none !important;
+  }
+  .cart-table td:nth-child(1) { grid-area: img; }
+  .cart-table td:nth-child(2) { grid-area: price; font-size: 0.95rem !important; }
+  .cart-table td:nth-child(3) { grid-area: qty; }
+  .cart-table td:nth-child(4) { grid-area: total; text-align: right !important; font-size: 1.05rem !important; }
+  .cart-table td:nth-child(5) {
+    grid-area: action;
+    border-top: 1px solid var(--border-color) !important;
+    padding-top: 8px !important;
+    text-align: right !important;
+  }
+}
+
+/* 12. Individual Product PDP Layout on Mobile */
+@media (max-width: 900px) {
+  .velox-pdp-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 24px !important;
+    padding: 20px 0 !important;
+  }
+  .velox-gallery-wrap {
+    position: static !important;
+    width: 100% !important;
+  }
+  .velox-main-img {
+    max-height: 280px !important;
+    object-fit: contain !important;
+    margin: 0 auto !important;
+  }
+  .velox-pdp-title {
+    font-size: 1.6rem !important;
+  }
+  .velox-pdp-price {
+    font-size: 1.7rem !important;
+  }
+  .velox-swatches-grid {
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 8px !important;
+  }
+  .velox-sticky-bar {
+    padding: 10px 14px calc(10px + env(safe-area-inset-bottom, 0px)) !important;
+  }
+  .velox-sticky-info {
+    display: none !important;
+  }
+  .velox-sticky-container {
+    width: 100% !important;
+    justify-content: space-between !important;
+  }
+  .velox-sticky-btn {
+    padding: 12px 20px !important;
+    font-size: 0.8rem !important;
+  }
+}
+
+/* 13. Floating WhatsApp Button Safe Area */
+.whatsapp-float {
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px)) !important;
+  right: 18px !important;
+  width: 52px !important;
+  height: 52px !important;
+  font-size: 1.45rem !important;
+  z-index: 9998 !important;
+}
+
+/* 14. Modals & Search Overlay */
+.order-modal,
+.quickview-modal-content {
+  max-width: calc(100vw - 28px) !important;
+  max-height: calc(100dvh - 36px) !important;
+  padding: 20px 16px !important;
+  overflow-y: auto !important;
+}
+.quickview-grid {
+  grid-template-columns: 1fr !important;
+  gap: 20px !important;
+}
+
+/* 15. Footer Polish */
+@media (max-width: 768px) {
+  .footer {
+    padding: 44px 0 24px !important;
+  }
+  .footer-grid {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 28px !important;
+    text-align: center !important;
+  }
+  .footer-brand {
+    align-items: center !important;
+  }
+  .footer-links {
+    align-items: center !important;
+  }
+  .footer-bottom {
+    flex-direction: column !important;
+    gap: 12px !important;
+    text-align: center !important;
+  }
+}
+
 /* ── Print Styles ─────────────────────────────────────────────────────────── */
 @media print {
   .header, .footer, .topbar, .whatsapp-float { display: none !important; }
