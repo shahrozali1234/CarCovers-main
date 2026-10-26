@@ -992,6 +992,18 @@ function initMobileNav() {
     if (mobileOverlay) {
         mobileOverlay.addEventListener('click', closeMobileMenu);
     }
+
+    // Close on any link click
+    mobileDrawer.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', closeMobileMenu);
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && mobileDrawer.classList.contains('open')) {
+            closeMobileMenu();
+        }
+    });
 }
 
 
